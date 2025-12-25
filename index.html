@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abedul Apartamentos - Tu Primer Hogar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-brown: #dec68c;
+            --dark-brown: #c9af72;
+            --natural-green: #36ae71;
+            --dark-green: #2a8d5a;
+            --navy-blue: #3f4b5e;
+            --light-navy: #4a576d;
+            --beige: #f8f5f0;
+            --light-beige: #fefcf8;
+            --white: #ffffff;
+            --gray: #7f8c8d;
+            --light-gray: #e8ecee;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--beige) 0%, var(--light-beige) 100%);
+            color: var(--navy-blue);
+            line-height: 1.7;
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header mejorado */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--navy-blue) 100%);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-brown), var(--natural-green), var(--navy-blue));
+        }
+        
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-accent {
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 12px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 6px;
+            z-index: 1;
+        }
+        
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            font-weight: 400;
+            font-style: italic;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-decoration {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+        }
+        
+        .header-decoration-2 {
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+        
+        /* Sección del carrusel */
+        .carousel-section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--navy-blue);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .section-title i {
+            color: var(--natural-green);
+            font-size: 2rem;
+        }
+        
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+        }
+        
+        .carousel-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        
+        .carousel {
+            display: flex;
+            width: 500%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .carousel-item {
+            width: 20%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .carousel-item::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+            pointer-events: none;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-indicators {
+            position: absolute;
+            bottom: 25px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            z-index: 10;
+        }
+        
+        .indicator {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .indicator.active {
+            background-color: var(--white);
+            transform: scale(1.3);
+            border-color: var(--natural-green);
+        }
+        
+        /* Sección del Calendly */
+        .calendly-section {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border: 1px solid var(--primary-brown);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        
+        .calendly-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-brown), var(--natural-green));
+        }
+        
+        .calendly-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .calendly-section h2 {
+            margin-bottom: 30px;
+            color: var(--navy-blue);
+            text-align: center;
+            font-size: 2.2rem;
+            position: relative;
+            padding-bottom: 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .calendly-section h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--natural-green), var(--primary-brown));
+            border-radius: 2px;
+        }
+        
+        .calendly-intro {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            color: var(--light-navy);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        
+        /* Contenedor de Calendly */
+        .calendly-container {
+            width: 100%;
+            background: var(--light-beige);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        
+        .calendly-inline-widget {
+            width: 100% !important;
+            height: 700px !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
+        }
+        
+        .calendly-note {
+            text-align: center;
+            font-style: italic;
+            color: var(--gray);
+            margin-top: 20px;
+            font-size: 0.95rem;
+            padding: 0 10px;
+        }
+        
+        /* Footer mejorado */
+        footer {
+            text-align: center;
+            padding: 35px 0;
+            color: var(--gray);
+            font-size: 0.95rem;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-top: 5px solid var(--primary-brown);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .brand-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+        
+        .brand-name {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--navy-blue);
+            font-family: 'Montserrat', sans-serif;
+            position: relative;
+        }
+        
+        .brand-name::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-brown), transparent);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--light-beige);
+            color: var(--navy-blue);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary-brown);
+            color: var(--white);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        }
+        
+        .copyright {
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .copyright p {
+            margin: 5px 0;
+        }
+        
+        .ingett-credit {
+            font-weight: 600;
+            color: var(--navy-blue);
+            margin-top: 10px;
+        }
+        
+        .footer-decoration {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            background: rgba(222, 198, 140, 0.1);
+            border-radius: 50%;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .carousel-container {
+                height: 400px;
+            }
+            
+            .calendly-inline-widget {
+                height: 650px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .carousel-container {
+                height: 350px;
+            }
+            
+            .calendly-section {
+                padding: 30px 20px;
+            }
+            
+            .calendly-inline-widget {
+                height: 600px !important;
+            }
+            
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .brand-footer {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .carousel-container {
+                height: 250px;
+            }
+            
+            .calendly-section {
+                padding: 25px 15px;
+            }
+            
+            .calendly-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .calendly-inline-widget {
+                height: 550px !important;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .calendly-intro {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <div class="logo">ABEDUL</div>
+                <div class="logo-accent"></div>
+            </div>
+            <div class="tagline">Tu primer hogar, donde comienzan tus sueños</div>
+            <div class="header-decoration"></div>
+            <div class="header-decoration-2"></div>
+        </header>
+        
+        <!-- Carrusel en la parte superior -->
+        <section class="carousel-section">
+            <h2 class="section-title"><i class="fas fa-images"></i> Descubre Nuestros Espacios</h2>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-item">
+                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1763752662/Captura_de_pantalla_2025-11-21_141736_x4pjtn.png" alt="Imagen 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1763752642/Captura_de_pantalla_2025-11-21_141707_gxbwnc.png" alt="Imagen 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1763752529/EXTERIOR_to759n.jpg" alt="Imagen 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1763752528/Patio_de_juegos_brnbzr.jpg" alt="Imagen 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1763752527/BBQ_peayaf.jpg" alt="Imagen 5">
+                    </div>
+                </div>
+                <div class="carousel-indicators" id="carousel-indicators">
+                    <!-- Los indicadores se generarán con JavaScript -->
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección de Calendly -->
+        <section class="calendly-section">
+            <h2><i class="far fa-calendar-alt"></i> Agenda Tu Visita</h2>
+            
+            <p class="calendly-intro">
+                ¡Te invitamos a conocer nuestro proyecto! Agenda una cita para visitar Abedul Apartamentos 
+                y descubre por qué somos la mejor opción para tu primer hogar. Selecciona una fecha y hora 
+                que se adapte a tu disponibilidad.
+            </p>
+            
+            <div class="calendly-container">
+                <!-- Calendly inline widget begin -->
+                <div class="calendly-inline-widget" data-url="https://calendly.com/dcoronado-olandseguros/30min" style="min-width:320px;height:700px;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                <!-- Calendly inline widget end -->
+            </div>
+            
+            <p class="calendly-note">
+                <i class="fas fa-info-circle"></i> Después de agendar tu cita, recibirás un correo de confirmación con todos los detalles.
+            </p>
+        </section>
+        
+        <footer>
+            <div class="brand-footer">
+                <div class="brand-name">ABEDUL APARTAMENTOS</div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Abedul Apartamentos. Todos los derechos reservados.</p>
+                <p class="ingett-credit">Una marca creada por INGETT</p>
+            </div>
+            <div class="footer-decoration"></div>
+        </footer>
+    </div>
+
+    <script>
+        // Variables globales para el carrusel
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const carousel = document.querySelector('.carousel');
+        
+        // Carrusel automático
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            carousel.style.transform = `translateX(-${currentSlide * 20}%)`;
+            updateIndicators();
+        }
+        
+        // Cambiar imagen cada 2 segundos
+        setInterval(nextSlide, 2000);
+        
+        // Crear indicadores del carrusel
+        function createIndicators() {
+            const indicatorsContainer = document.getElementById('carousel-indicators');
+            
+            for (let i = 0; i < totalSlides; i++) {
+                const indicator = document.createElement('div');
+                indicator.classList.add('indicator');
+                if (i === 0) indicator.classList.add('active');
+                
+                indicator.addEventListener('click', () => {
+                    currentSlide = i;
+                    carousel.style.transform = `translateX(-${currentSlide * 20}%)`;
+                    updateIndicators();
+                });
+                
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+        
+        // Actualizar indicadores activos
+        function updateIndicators() {
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        // Inicializar la página
+        function init() {
+            createIndicators();
+        }
+        
+        // Ejecutar inicialización al cargar la página
+        init();
+    </script>
+</body>
+</html>
