@@ -77,6 +77,21 @@
             }
         }
         
+        @keyframes pulse-strong {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(54, 174, 113, 0.4);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 8px 25px rgba(54, 174, 113, 0.7);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 5px 15px rgba(54, 174, 113, 0.4);
+            }
+        }
+        
         @keyframes shine {
             0% {
                 background-position: -200% center;
@@ -108,6 +123,15 @@
             }
         }
         
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+        
         /* Tipografía ADA HYBRID para títulos (según manual) */
         h1, h2, h3, h4, h5, h6,
         .hero-title, .section-title, .description-title,
@@ -121,6 +145,96 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+        }
+        
+        /* Botón flotante para agendar cita - NUEVO */
+        .floating-button {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--natural-green), var(--dark-green));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 8px 25px rgba(54, 174, 113, 0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            text-align: center;
+            border: none;
+            overflow: hidden;
+            animation: pulse-strong 2s infinite;
+        }
+        
+        .floating-button:hover {
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 12px 35px rgba(54, 174, 113, 0.8);
+            animation: none;
+        }
+        
+        .floating-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .floating-button:hover::before {
+            left: 100%;
+        }
+        
+        .floating-button .button-text {
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-top: 2px;
+            font-family: 'ADA', sans-serif;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        
+        .floating-button .button-icon {
+            font-size: 1.8rem;
+            margin-bottom: 2px;
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+        }
+        
+        /* Versión alternativa en pantallas pequeñas */
+        @media (max-width: 768px) {
+            .floating-button {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                left: 20px;
+            }
+            
+            .floating-button .button-text {
+                font-size: 0.6rem;
+            }
+            
+            .floating-button .button-icon {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .floating-button {
+                width: 55px;
+                height: 55px;
+                bottom: 15px;
+                left: 15px;
+            }
         }
         
         /* Header - Primera Sección - CON EFECTOS */
@@ -204,16 +318,43 @@
             width: 80%;
         }
         
-        .hero-title {
-            font-size: 1.4rem;
-            font-weight: 700;
+        .hero-title-container {
             max-width: 900px;
             margin: 0 auto 25px;
-            line-height: 1.3;
             padding: 0 20px;
-            color: var(--white);
             animation: fadeInUp 0.8s ease-out 0.6s both;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--white);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .hero-subtitle-text {
+            font-size: 1.3rem;
+            font-weight: 400;
+            line-height: 1.4;
+            color: var(--white);
+            margin-bottom: 15px;
+            font-family: 'Avenir', 'Open Sans', sans-serif;
+            opacity: 0.95;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.85);
+            font-family: 'Avenir', 'Open Sans', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
         }
         
         /* Sección de logos de características - CON ANIMACIONES */
@@ -468,25 +609,30 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
-        /* Sección del Calendly - CON EFECTOS */
+        /* Sección del Calendly - CON EFECTOS SIMPLIFICADOS */
         .calendly-section {
             padding: 60px 0;
             background-color: var(--white);
             position: relative;
         }
         
+        /* ID para el botón flotante */
+        #agendar-cita {
+            scroll-margin-top: 20px;
+        }
+        
         .calendly-container {
             max-width: 900px;
             margin: 0 auto;
-            background-color: var(--light-beige);
-            border: 2px solid var(--light-gray);
+            background-color: var(--white);
             border-radius: 15px;
-            padding: 40px;
+            padding: 50px 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             position: relative;
             overflow: hidden;
             animation: fadeInUp 0.8s ease-out both;
             transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
         }
         
         .calendly-container:hover {
@@ -494,41 +640,26 @@
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
         
-        /* Borde animado */
-        .calendly-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-brown), var(--natural-green), var(--navy-blue));
-            background-size: 200% 100%;
-            animation: shine 3s linear infinite;
-        }
-        
         .calendly-title {
-            font-size: 1.6rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             color: var(--navy-blue);
             text-align: center;
-            line-height: 1.3;
+            line-height: 1.2;
             text-transform: uppercase;
             position: relative;
+            font-weight: 800;
         }
         
         .calendly-subtitle {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             color: var(--light-navy);
             text-align: center;
-            margin-bottom: 30px;
-            line-height: 1.6;
+            margin-bottom: 40px;
+            line-height: 1.5;
             position: relative;
-            padding: 15px;
-            border-left: 3px solid var(--natural-green);
-            border-right: 3px solid var(--natural-green);
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 8px;
+            font-weight: 400;
+            font-family: 'Avenir', 'Open Sans', sans-serif;
         }
         
         .calendly-widget-container {
@@ -1011,6 +1142,26 @@
                 height: 350px;
             }
             
+            .hero-title {
+                font-size: 1.9rem;
+            }
+            
+            .hero-subtitle-text {
+                font-size: 1.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .calendly-title {
+                font-size: 2.2rem;
+            }
+            
+            .calendly-subtitle {
+                font-size: 1.2rem;
+            }
+            
             .feature-item {
                 width: 160px;
                 height: 85px;
@@ -1021,12 +1172,8 @@
                 height: 65px;
             }
             
-            .hero-title {
-                font-size: 1.3rem;
-            }
-            
             .calendly-container {
-                padding: 30px;
+                padding: 40px 25px;
             }
         }
         
@@ -1062,15 +1209,31 @@
             }
             
             .hero-title {
-                font-size: 1.2rem;
+                font-size: 1.7rem;
             }
             
-            .section-title, .description-title, .calendly-title, .final-title {
+            .hero-subtitle-text {
+                font-size: 1.1rem;
+            }
+            
+            .hero-description {
+                font-size: 0.95rem;
+            }
+            
+            .calendly-title {
+                font-size: 2rem;
+            }
+            
+            .calendly-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title, .description-title, .final-title {
                 font-size: 1.4rem;
             }
             
             .calendly-container {
-                padding: 25px 20px;
+                padding: 35px 20px;
             }
             
             .brand-footer {
@@ -1111,7 +1274,23 @@
             }
             
             .hero-title {
-                font-size: 1.15rem;
+                font-size: 1.5rem;
+            }
+            
+            .hero-subtitle-text {
+                font-size: 1rem;
+            }
+            
+            .hero-description {
+                font-size: 0.9rem;
+            }
+            
+            .calendly-title {
+                font-size: 1.8rem;
+            }
+            
+            .calendly-subtitle {
+                font-size: 1rem;
             }
             
             .hero-subtitle {
@@ -1145,12 +1324,32 @@
                 height: 250px;
             }
             
-            .hero-title, .section-title, .description-title, .calendly-title, .final-title {
+            .hero-title {
+                font-size: 1.4rem;
+            }
+            
+            .hero-subtitle-text {
+                font-size: 0.95rem;
+            }
+            
+            .hero-description {
+                font-size: 0.85rem;
+            }
+            
+            .calendly-title {
+                font-size: 1.6rem;
+            }
+            
+            .calendly-subtitle {
+                font-size: 0.95rem;
+            }
+            
+            .section-title, .description-title, .final-title {
                 font-size: 1.25rem;
             }
             
             .calendly-container {
-                padding: 20px 15px;
+                padding: 30px 15px;
             }
             
             .scroll-top {
@@ -1171,7 +1370,27 @@
                 height: 220px;
             }
             
-            .hero-title, .section-title, .description-title, .calendly-title, .final-title {
+            .hero-title {
+                font-size: 1.3rem;
+            }
+            
+            .hero-subtitle-text {
+                font-size: 0.9rem;
+            }
+            
+            .hero-description {
+                font-size: 0.8rem;
+            }
+            
+            .calendly-title {
+                font-size: 1.5rem;
+            }
+            
+            .calendly-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .section-title, .description-title, .final-title {
                 font-size: 1.2rem;
             }
             
@@ -1188,11 +1407,6 @@
                 max-width: 120px;
             }
             
-            .hero-title {
-                font-size: 1.1rem;
-                margin-bottom: 20px;
-            }
-            
             .value-item {
                 padding: 12px;
             }
@@ -1200,7 +1414,23 @@
         
         @media (max-width: 380px) {
             .hero-title {
-                font-size: 1.05rem;
+                font-size: 1.2rem;
+            }
+            
+            .hero-subtitle-text {
+                font-size: 0.85rem;
+            }
+            
+            .hero-description {
+                font-size: 0.75rem;
+            }
+            
+            .calendly-title {
+                font-size: 1.4rem;
+            }
+            
+            .calendly-subtitle {
+                font-size: 0.85rem;
             }
             
             .feature-logo {
@@ -1227,6 +1457,12 @@
         <div class="loading-text">Abedul Apartamentos</div>
     </div>
     
+    <!-- Botón flotante para agendar cita - NUEVO -->
+    <a href="#agendar-cita" class="floating-button" id="floatingButton" title="Agendar cita ahora">
+        <div class="button-icon">📅</div>
+        <div class="button-text">Agendar</div>
+    </a>
+    
     <!-- Hero Section - CON EFECTOS -->
     <section class="hero-section">
         <div class="container">
@@ -1237,7 +1473,11 @@
                 
                 <div class="hero-subtitle">A B E D U L D E P A R T A M E N T O S</div>
                 
-                <div class="hero-title">Invierte TIEMPO decidiendo qué tipo de departamento quieres. Entre tantas opciones, elegir bien también es una decisión.</div>
+                <div class="hero-title-container">
+                    <h1 class="hero-title">Un lugar que se sienta bien.</h1>
+                    <div class="hero-subtitle-text">Vivir cómodo junto a lo que más importa: tu familia.</div>
+                    <div class="hero-description">Suites, departamentos de 2 y 3 dormitorios en excelente ubicación en Quito</div>
+                </div>
                 
                 <div class="features-logos">
                     <div class="feature-item">
@@ -1285,12 +1525,10 @@
     </section>
     
     <!-- Sección del Calendly -->
-    <section class="calendly-section">
+    <section class="calendly-section" id="agendar-cita">
         <div class="container">
             <div class="calendly-container">
-                <h2 class="calendly-title">Agenda Tu Visita</h2>
-                <p class="calendly-subtitle">Este formulario nos permite confirmar si este proyecto se ajusta a lo que estás buscando antes de avanzar.</p>
-                
+                <h2 class="calendly-title">Agenda tu reunión gratuita de 30 minutos</h2>
                 <div class="calendly-widget-container">
                     <!-- Principio del widget integrado de Calendly -->
                     <div class="calendly-inline-widget" data-url="https://calendly.com/abeduldepartamentos/60min?hide_event_type_details=1" style="min-width:320px;height:700px;"></div>
@@ -1472,6 +1710,14 @@
             });
         });
         
+        // Botón flotante para agendar cita
+        const floatingButton = document.getElementById('floatingButton');
+        
+        // Función para animar el botón flotante
+        function animateFloatingButton() {
+            floatingButton.style.animation = 'pulse-strong 2s infinite';
+        }
+        
         // Animaciones al hacer scroll
         const observerOptions = {
             threshold: 0.1,
@@ -1493,15 +1739,57 @@
         
         // Efecto de escritura en el título principal (opcional)
         const heroTitle = document.querySelector('.hero-title');
-        const originalText = heroTitle.textContent;
-        heroTitle.textContent = '';
+        const heroSubtitle = document.querySelector('.hero-subtitle-text');
+        const heroDescription = document.querySelector('.hero-description');
+        const calendlyTitle = document.querySelector('.calendly-title');
         
-        let i = 0;
-        function typeWriter() {
-            if (i < originalText.length) {
-                heroTitle.textContent += originalText.charAt(i);
+        const originalTitle = heroTitle.textContent;
+        const originalSubtitle = heroSubtitle.textContent;
+        const originalDescription = heroDescription.textContent;
+        const originalCalendlyTitle = calendlyTitle.textContent;
+        
+        heroTitle.textContent = '';
+        heroSubtitle.textContent = '';
+        heroDescription.textContent = '';
+        calendlyTitle.textContent = '';
+        
+        let i = 0, j = 0, k = 0, l = 0;
+        
+        function typeWriterTitle() {
+            if (i < originalTitle.length) {
+                heroTitle.textContent += originalTitle.charAt(i);
                 i++;
-                setTimeout(typeWriter, 30);
+                setTimeout(typeWriterTitle, 50);
+            } else if (j === 0) {
+                setTimeout(typeWriterSubtitle, 300);
+            }
+        }
+        
+        function typeWriterSubtitle() {
+            if (j < originalSubtitle.length) {
+                heroSubtitle.textContent += originalSubtitle.charAt(j);
+                j++;
+                setTimeout(typeWriterSubtitle, 40);
+            } else if (k === 0) {
+                setTimeout(typeWriterDescription, 300);
+            }
+        }
+        
+        function typeWriterDescription() {
+            if (k < originalDescription.length) {
+                heroDescription.textContent += originalDescription.charAt(k);
+                k++;
+                setTimeout(typeWriterDescription, 30);
+            } else if (l === 0) {
+                setTimeout(typeWriterCalendly, 1000);
+            }
+        }
+        
+        function typeWriterCalendly() {
+            if (l < originalCalendlyTitle.length) {
+                calendlyTitle.textContent += originalCalendlyTitle.charAt(l);
+                l++;
+                setTimeout(typeWriterCalendly, 40);
             }
         }
         
@@ -1512,13 +1800,16 @@
             
             // Iniciar efecto de escritura después de un breve retraso
             setTimeout(() => {
-                typeWriter();
+                typeWriterTitle();
             }, 500);
             
             // Inicializar animaciones de elementos
             document.querySelectorAll('.feature-item, .value-item').forEach((item, index) => {
                 item.style.animationDelay = `${index * 0.1}s`;
             });
+            
+            // Iniciar animación del botón flotante
+            animateFloatingButton();
         }
         
         // Ejecutar inicialización al cargar la página
