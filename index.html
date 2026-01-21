@@ -8,8 +8,6 @@
     <!-- Fuentes según el manual de identidad -->
     <link href="https://fonts.cdnfonts.com/css/ada" rel="stylesheet">
     <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet">
-    <!-- Animate.css para animaciones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         * {
             margin: 0;
@@ -18,10 +16,10 @@
         }
         
         :root {
-            /* Colores principales del manual de identidad */
+            /* Colores principales del manual de identidad - ACTUALIZADO */
             --primary-brown: #dec68c;      /* Marrón Claro #dec68c */
             --dark-brown: #c9af72;          /* Variante más oscura para hover */
-            --natural-green: #36ae71;       /* Verde Natural #36ae71 */
+            --natural-green: #36ae71;       /* Verde Natural #36ae71 - MANTENIDO */
             --dark-green: #2a8d5a;          /* Variante más oscura */
             --navy-blue: #3f4b5e;           /* Azul Marino #3f4b5e */
             --light-navy: #4a576d;          /* Variante más clara */
@@ -44,94 +42,6 @@
             overflow-x: hidden;
         }
         
-        /* Animaciones personalizadas */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        
-        @keyframes pulse-strong {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 5px 15px rgba(54, 174, 113, 0.4);
-            }
-            50% {
-                transform: scale(1.1);
-                box-shadow: 0 8px 25px rgba(54, 174, 113, 0.7);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 5px 15px rgba(54, 174, 113, 0.4);
-            }
-        }
-        
-        @keyframes shine {
-            0% {
-                background-position: -200% center;
-            }
-            100% {
-                background-position: 200% center;
-            }
-        }
-        
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-5px);
-            }
-        }
-        
         /* Tipografía ADA HYBRID para títulos (según manual) */
         h1, h2, h3, h4, h5, h6,
         .hero-title, .section-title, .description-title,
@@ -147,14 +57,14 @@
             padding: 0 20px;
         }
         
-        /* Botón flotante para agendar cita - NUEVO */
+        /* Botón flotante para agendar cita */
         .floating-button {
             position: fixed;
             bottom: 30px;
             left: 30px;
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, var(--natural-green), var(--dark-green));
+            background-color: var(--navy-blue); /* Cambiado a azul marino */
             color: var(--white);
             border-radius: 50%;
             display: flex;
@@ -164,34 +74,17 @@
             font-size: 1.5rem;
             cursor: pointer;
             z-index: 1001;
-            box-shadow: 0 8px 25px rgba(54, 174, 113, 0.5);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
             text-decoration: none;
             text-align: center;
             border: none;
-            overflow: hidden;
-            animation: pulse-strong 2s infinite;
         }
         
         .floating-button:hover {
-            transform: scale(1.15) rotate(5deg);
-            box-shadow: 0 12px 35px rgba(54, 174, 113, 0.8);
-            animation: none;
-        }
-        
-        .floating-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.7s ease;
-        }
-        
-        .floating-button:hover::before {
-            left: 100%;
+            transform: scale(1.1);
+            background-color: var(--primary-brown); /* Cambiado a marrón */
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
         }
         
         .floating-button .button-text {
@@ -201,13 +94,37 @@
             font-family: 'ADA', sans-serif;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
         
-        .floating-button .button-icon {
-            font-size: 1.8rem;
+        .calendar-icon {
+            width: 32px;
+            height: 32px;
             margin-bottom: 2px;
-            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.2));
+        }
+        
+        /* Botón de agendar cita general */
+        .agendar-btn {
+            display: inline-block;
+            background-color: var(--navy-blue); /* Azul marino */
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-family: 'ADA', 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .agendar-btn:hover {
+            background-color: var(--primary-brown); /* Marrón en hover */
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         /* Versión alternativa en pantallas pequeñas */
@@ -223,8 +140,14 @@
                 font-size: 0.6rem;
             }
             
-            .floating-button .button-icon {
-                font-size: 1.5rem;
+            .calendar-icon {
+                width: 28px;
+                height: 28px;
+            }
+            
+            .agendar-btn {
+                padding: 10px 20px;
+                font-size: 1rem;
             }
         }
         
@@ -235,32 +158,20 @@
                 bottom: 15px;
                 left: 15px;
             }
+            
+            .calendar-icon {
+                width: 24px;
+                height: 24px;
+            }
         }
         
-        /* Header - Primera Sección - CON EFECTOS */
+        /* Header - Primera Sección */
         .hero-section {
             background-color: var(--navy-blue);
             color: var(--white);
             padding: 30px 0 20px 0;
             text-align: center;
-            border-bottom: 5px solid var(--primary-brown);
             position: relative;
-            overflow: hidden;
-        }
-        
-        /* Efecto de partículas sutiles en el fondo */
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05) 1px, transparent 1px),
-                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: 0;
         }
         
         .hero-content {
@@ -270,7 +181,6 @@
         
         .hero-logo-container {
             margin-bottom: 15px;
-            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
         
         .hero-logo {
@@ -279,12 +189,6 @@
             margin: 0 auto;
             display: block;
             filter: brightness(0) invert(1);
-            transition: all 0.5s ease;
-        }
-        
-        .hero-logo:hover {
-            transform: rotateY(180deg) scale(1.1);
-            filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(222, 198, 140, 0.5));
         }
         
         .hero-subtitle {
@@ -296,34 +200,12 @@
             text-transform: uppercase;
             padding: 0 20px;
             color: var(--primary-brown);
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-            position: relative;
-            display: inline-block;
-        }
-        
-        /* Efecto de subrayado animado para el subtítulo */
-        .hero-subtitle::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary-brown), transparent);
-            transition: width 0.6s ease;
-        }
-        
-        .hero-subtitle:hover::after {
-            width: 80%;
         }
         
         .hero-title-container {
             max-width: 900px;
             margin: 0 auto 25px;
             padding: 0 20px;
-            animation: fadeInUp 0.8s ease-out 0.6s both;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         
         .hero-title {
@@ -336,13 +218,13 @@
         }
         
         .hero-subtitle-text {
-            font-size: 1.3rem;
-            font-weight: 400;
-            line-height: 1.4;
+            font-size: 2.2rem; /* Mismo tamaño que el título */
+            font-weight: 800; /* Misma negrita que el título */
+            line-height: 1.2;
             color: var(--white);
             margin-bottom: 15px;
-            font-family: 'Avenir', 'Open Sans', sans-serif;
-            opacity: 0.95;
+            font-family: 'ADA', 'Montserrat', sans-serif; /* Misma fuente ADA */
+            text-transform: uppercase;
         }
         
         .hero-description {
@@ -353,71 +235,17 @@
             font-family: 'Avenir', 'Open Sans', sans-serif;
             max-width: 800px;
             margin: 0 auto;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
         }
         
-        /* Sección de logos de características - CON ANIMACIONES */
-        .features-logos {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 15px 0 0 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            animation: fadeInUp 0.8s ease-out 0.8s both;
+        /* Botón en hero */
+        .hero-button-container {
+            margin-top: 25px;
         }
         
-        .feature-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 200px;
-            height: 100px;
-            position: relative;
-            flex: 1;
-            padding: 10px 5px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .feature-item:hover {
-            transform: translateY(-5px) scale(1.05);
-        }
-        
-        .feature-item::after {
-            content: "";
-            position: absolute;
-            right: 0;
-            top: 20%;
-            height: 60%;
-            width: 1px;
-            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
-        }
-        
-        .feature-item:last-child::after {
-            display: none;
-        }
-        
-        .feature-logo {
-            width: 160px;
-            height: 80px;
-            object-fit: contain;
-            filter: brightness(0) invert(1);
-            transition: all 0.5s ease;
-        }
-        
-        .feature-item:hover .feature-logo {
-            filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(70deg);
-            animation: pulse 1.5s infinite;
-        }
-        
-        /* Sección del carrusel - CON EFECTOS MEJORADOS */
+        /* Sección del carrusel */
         .carousel-section {
             padding: 50px 0;
             background-color: var(--white);
-            position: relative;
         }
         
         .section-title {
@@ -425,22 +253,7 @@
             margin-bottom: 25px;
             color: var(--navy-blue);
             text-transform: uppercase;
-            position: relative;
-            display: inline-block;
-        }
-        
-        /* Efecto decorativo en títulos */
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-brown), var(--natural-green), var(--primary-brown));
-            border-radius: 2px;
-            background-size: 200% 100%;
-            animation: shine 3s linear infinite;
+            text-align: center;
         }
         
         .carousel-container {
@@ -448,23 +261,14 @@
             width: 100%;
             height: 400px;
             overflow: hidden;
-            border-radius: 12px;
-            border: 2px solid var(--light-gray);
-            box-shadow: 0 10px 30px rgba(63, 75, 94, 0.15);
-            animation: slideInRight 0.8s ease-out 0.3s both;
-            transition: all 0.3s ease;
-        }
-        
-        .carousel-container:hover {
-            box-shadow: 0 15px 40px rgba(63, 75, 94, 0.25);
-            transform: translateY(-5px);
+            border-radius: 8px;
         }
         
         .carousel {
             display: flex;
             width: 500%;
             height: 100%;
-            transition: transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: transform 1s ease;
         }
         
         .carousel-item {
@@ -478,11 +282,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 8s ease;
-        }
-        
-        .carousel-item:hover img {
-            transform: scale(1.1);
         }
         
         .carousel-indicators {
@@ -502,63 +301,26 @@
             border-radius: 50%;
             background-color: rgba(255,255,255,0.5);
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.3s ease;
             border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .indicator::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .indicator:hover::before {
-            left: 100%;
         }
         
         .indicator.active {
             background-color: var(--white);
             transform: scale(1.3);
-            border-color: var(--natural-green);
-            box-shadow: 0 0 10px rgba(54, 174, 113, 0.5);
+            border-color: var(--navy-blue); /* Cambiado a azul marino */
         }
         
-        /* Sección de descripción - CON ANIMACIONES */
+        /* Sección de descripción */
         .description-section {
             padding: 60px 0;
             background-color: var(--light-beige);
-            border-top: 2px solid var(--light-gray);
-            border-bottom: 2px solid var(--light-gray);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Patrón decorativo sutil */
-        .description-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 100%;
-            height: 200%;
-            background: radial-gradient(circle at 70% 30%, rgba(222, 198, 140, 0.05) 0%, transparent 50%);
-            z-index: 0;
         }
         
         .description-content {
             max-width: 900px;
             margin: 0 auto;
             text-align: center;
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 0.8s ease-out both;
         }
         
         .description-title {
@@ -567,28 +329,6 @@
             color: var(--navy-blue);
             line-height: 1.3;
             text-transform: uppercase;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .description-title::after {
-            content: '✦';
-            position: absolute;
-            right: -30px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary-brown);
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .description-title::before {
-            content: '✦';
-            position: absolute;
-            left: -30px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary-brown);
-            animation: float 3s ease-in-out infinite 0.5s;
         }
         
         .description-text {
@@ -596,24 +336,39 @@
             color: var(--light-navy);
             line-height: 1.8;
             margin-bottom: 30px;
-            position: relative;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
         }
         
-        .description-text:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        /* Botón en descripción */
+        .description-button {
+            margin-top: 20px;
         }
         
-        /* Sección del Calendly - CON EFECTOS SIMPLIFICADOS */
+        /* Sección de mensaje - PRIMERA SECCIÓN DE MENSAJE */
+        .message-section {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            padding: 60px 0;
+            width: 100%;
+            margin: 0;
+        }
+        
+        .message-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .message-text {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            font-family: 'Avenir', 'Open Sans', sans-serif;
+        }
+        
+        /* Sección del Calendly */
         .calendly-section {
             padding: 60px 0;
             background-color: var(--white);
-            position: relative;
         }
         
         /* ID para el botón flotante */
@@ -625,55 +380,25 @@
             max-width: 900px;
             margin: 0 auto;
             background-color: var(--white);
-            border-radius: 15px;
-            padding: 50px 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.8s ease-out both;
-            transition: all 0.3s ease;
-            border: 1px solid var(--light-gray);
-        }
-        
-        .calendly-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            border-radius: 8px;
+            padding: 40px 20px;
         }
         
         .calendly-title {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 15px;
             color: var(--navy-blue);
             text-align: center;
             line-height: 1.2;
             text-transform: uppercase;
-            position: relative;
             font-weight: 800;
-        }
-        
-        .calendly-subtitle {
-            font-size: 1.3rem;
-            color: var(--light-navy);
-            text-align: center;
-            margin-bottom: 40px;
-            line-height: 1.5;
-            position: relative;
-            font-weight: 400;
-            font-family: 'Avenir', 'Open Sans', sans-serif;
         }
         
         .calendly-widget-container {
             width: 100%;
             background-color: var(--white);
-            border-radius: 10px;
+            border-radius: 8px;
             padding: 20px;
-            border: 1px solid var(--light-gray);
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .calendly-widget-container:hover {
-            box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.08);
         }
         
         .calendly-note {
@@ -682,46 +407,100 @@
             color: var(--gray);
             margin-top: 20px;
             font-size: 0.95rem;
-            position: relative;
-            padding-left: 25px;
         }
         
         .calendly-note i {
-            color: var(--natural-green);
+            color: var(--navy-blue); /* Cambiado a azul marino */
             margin-right: 8px;
-            position: absolute;
-            left: 0;
-            top: 2px;
-            animation: pulse 2s infinite;
         }
         
-        /* Sección final - CON EFECTOS */
+        /* NUEVA SECCIÓN DESPUÉS DE CALENDLY */
+        .home-message-section {
+            background-color: var(--navy-blue); /* CAMBIADO a azul marino */
+            color: var(--white);
+            padding: 80px 0;
+            width: 100%;
+            margin: 0;
+        }
+        
+        .home-message-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+        
+        .home-message-title {
+            font-size: 2.2rem;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            font-family: 'ADA', 'Montserrat', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+        
+        .home-message-subtitle {
+            font-size: 1.8rem;
+            line-height: 1.4;
+            margin-bottom: 40px;
+            font-family: 'ADA', 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .home-message-text {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            font-family: 'Avenir', 'Open Sans', sans-serif;
+            margin-bottom: 20px;
+        }
+        
+        /* Sección de logos de auspiciantes - EXTRA GRANDES */
+        .sponsors-section {
+            padding: 120px 0;
+            background-color: var(--white);
+            width: 100%;
+            border-top: 1px solid var(--light-gray);
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .sponsors-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .sponsors-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+            flex-wrap: wrap;
+        }
+        
+        .sponsor-logo {
+            height: 150px;
+            max-width: 350px;
+            object-fit: contain;
+            filter: grayscale(0%);
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .sponsor-logo:hover {
+            opacity: 1;
+            transform: scale(1.05);
+            filter: grayscale(0%) brightness(1.1);
+        }
+        
+        /* Sección final */
         .final-section {
             padding: 60px 0;
             background-color: var(--light-beige);
-            border-top: 2px solid var(--light-gray);
-            position: relative;
-        }
-        
-        /* Patrón de hojas sutil */
-        .final-section::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 200px;
-            height: 200px;
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%2336ae71' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
-            opacity: 0.3;
-            z-index: 0;
         }
         
         .final-content {
             max-width: 900px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 0.8s ease-out both;
         }
         
         .final-title {
@@ -738,10 +517,6 @@
             color: var(--navy-blue);
             font-weight: 600;
             text-align: center;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
         }
         
         .final-text {
@@ -750,7 +525,6 @@
             line-height: 1.8;
             margin-bottom: 25px;
             text-align: center;
-            padding: 0 10px;
         }
         
         .values-list {
@@ -764,30 +538,13 @@
             align-items: flex-start;
             margin-bottom: 20px;
             padding: 15px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            animation: slideInRight 0.5s ease-out both;
-            animation-delay: calc(var(--item-index) * 0.1s);
         }
-        
-        .value-item:hover {
-            background-color: rgba(54, 174, 113, 0.05);
-            transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .value-item:nth-child(1) { --item-index: 1; }
-        .value-item:nth-child(2) { --item-index: 2; }
-        .value-item:nth-child(3) { --item-index: 3; }
-        .value-item:nth-child(4) { --item-index: 4; }
         
         .value-icon {
-            color: var(--natural-green);
+            color: var(--navy-blue); /* Cambiado a azul marino */
             font-size: 1.2rem;
             margin-right: 15px;
             margin-top: 4px;
-            animation: pulse 2s infinite;
-            animation-delay: calc(var(--item-index) * 0.5s);
         }
         
         .value-text {
@@ -801,36 +558,8 @@
             text-align: center;
             margin-top: 40px;
             padding: 30px;
-            border-top: 1px solid var(--light-gray);
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 15px;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.8s ease-out 0.5s both;
-        }
-        
-        /* Efecto de brillo en CTA */
-        .final-cta::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to right,
-                transparent 0%,
-                rgba(255, 255, 255, 0.1) 50%,
-                transparent 100%
-            );
-            transform: rotate(30deg);
-            animation: shine 5s linear infinite;
-            z-index: 0;
-        }
-        
-        .final-cta > * {
-            position: relative;
-            z-index: 1;
+            background: var(--white);
+            border-radius: 8px;
         }
         
         .cta-title {
@@ -861,33 +590,22 @@
             align-items: center;
             text-align: center;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 8px;
             background: var(--white);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
             min-width: 180px;
-            animation: float 4s ease-in-out infinite;
-            animation-delay: calc(var(--contact-index) * 0.2s);
         }
         
-        .contact-item:nth-child(1) { --contact-index: 1; }
-        .contact-item:nth-child(2) { --contact-index: 2; }
-        
         .contact-item:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
         }
         
         .contact-icon {
             font-size: 2rem;
             color: var(--navy-blue);
             margin-bottom: 15px;
-            transition: all 0.3s ease;
-        }
-        
-        .contact-item:hover .contact-icon {
-            color: var(--natural-green);
-            transform: scale(1.2);
         }
         
         .contact-text {
@@ -897,57 +615,22 @@
         }
         
         .contact-link {
-            color: var(--natural-green);
+            color: var(--navy-blue); /* Cambiado a azul marino */
             text-decoration: none;
             font-weight: 600;
-            position: relative;
-            padding-bottom: 2px;
             transition: all 0.3s ease;
         }
         
-        .contact-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--natural-green);
-            transition: width 0.3s ease;
-        }
-        
         .contact-link:hover {
-            color: var(--dark-green);
+            color: var(--primary-brown); /* Cambiado a marrón */
         }
         
-        .contact-link:hover::after {
-            width: 100%;
-        }
-        
-        /* Footer - CON EFECTOS */
+        /* Footer */
         footer {
             padding: 40px 0;
             background-color: var(--navy-blue);
             color: var(--white);
             text-align: center;
-            border-top: 5px solid var(--primary-brown);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Efecto de partículas en footer */
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(222, 198, 140, 0.1) 1px, transparent 1px),
-                radial-gradient(circle at 90% 80%, rgba(222, 198, 140, 0.1) 1px, transparent 1px);
-            background-size: 60px 60px;
-            z-index: 0;
         }
         
         .footer-content {
@@ -962,20 +645,13 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 0 30px;
-            animation: fadeInUp 0.8s ease-out both;
         }
         
         .brand-name {
             font-size: 1.6rem;
             font-weight: bold;
             text-transform: uppercase;
-            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
-        }
-        
-        .brand-name:hover {
-            color: var(--primary-brown);
-            transform: scale(1.05);
         }
         
         .social-links {
@@ -993,40 +669,20 @@
             background-color: rgba(255, 255, 255, 0.1);
             color: var(--white);
             font-size: 1.3rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s ease;
             border-radius: 50%;
             text-decoration: none;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .social-links a:hover::before {
-            left: 100%;
         }
         
         .social-links a:hover {
             background-color: var(--primary-brown);
             color: var(--navy-blue);
-            transform: translateY(-5px) rotate(10deg);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
         
         .copyright {
             margin-top: 25px;
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.7);
-            animation: fadeInUp 0.8s ease-out 0.3s both;
         }
         
         .copyright p {
@@ -1037,27 +693,6 @@
             font-weight: 600;
             margin-top: 10px;
             color: var(--primary-brown);
-            position: relative;
-            display: inline-block;
-            padding: 0 10px;
-        }
-        
-        .ingett-credit::before,
-        .ingett-credit::after {
-            content: '•';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--primary-brown);
-            opacity: 0.7;
-        }
-        
-        .ingett-credit::before {
-            left: -5px;
-        }
-        
-        .ingett-credit::after {
-            right: -5px;
         }
         
         /* Botón de scroll to top */
@@ -1067,7 +702,7 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background-color: var(--natural-green);
+            background-color: var(--navy-blue); /* Cambiado a azul marino */
             color: white;
             border-radius: 50%;
             display: flex;
@@ -1078,8 +713,7 @@
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s ease;
-            box-shadow: 0 4px 15px rgba(54, 174, 113, 0.4);
+            transition: all 0.3s ease;
         }
         
         .scroll-top.visible {
@@ -1088,9 +722,8 @@
         }
         
         .scroll-top:hover {
-            background-color: var(--dark-green);
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(54, 174, 113, 0.6);
+            background-color: var(--primary-brown); /* Cambiado a marrón */
+            transform: scale(1.1);
         }
         
         /* Efecto de carga inicial */
@@ -1113,7 +746,6 @@
             width: 100px;
             filter: brightness(0) invert(1);
             margin-bottom: 20px;
-            animation: pulse 1.5s infinite;
         }
         
         .loading-text {
@@ -1121,19 +753,24 @@
             font-family: 'ADA', sans-serif;
             text-transform: uppercase;
             letter-spacing: 2px;
-            animation: fadeInUp 1s ease-in-out infinite alternate;
         }
         
         /* Responsive */
+        @media (max-width: 1200px) {
+            .sponsors-logos {
+                gap: 80px;
+            }
+            
+            .sponsor-logo {
+                height: 130px;
+                max-width: 300px;
+            }
+        }
+        
         @media (max-width: 1100px) {
             .feature-item {
                 width: 180px;
                 height: 90px;
-            }
-            
-            .feature-logo {
-                width: 140px;
-                height: 70px;
             }
         }
         
@@ -1142,12 +779,8 @@
                 height: 350px;
             }
             
-            .hero-title {
+            .hero-title, .hero-subtitle-text {
                 font-size: 1.9rem;
-            }
-            
-            .hero-subtitle-text {
-                font-size: 1.2rem;
             }
             
             .hero-description {
@@ -1155,51 +788,46 @@
             }
             
             .calendly-title {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
-            .calendly-subtitle {
+            .message-text {
                 font-size: 1.2rem;
             }
             
-            .feature-item {
-                width: 160px;
-                height: 85px;
+            .home-message-title {
+                font-size: 1.9rem;
             }
             
-            .feature-logo {
-                width: 130px;
-                height: 65px;
+            .home-message-subtitle {
+                font-size: 1.6rem;
             }
             
-            .calendly-container {
-                padding: 40px 25px;
+            .home-message-text {
+                font-size: 1.2rem;
+            }
+            
+            .sponsor-logo {
+                height: 110px;
+                max-width: 260px;
+            }
+            
+            .sponsors-logos {
+                gap: 60px;
+            }
+            
+            .sponsors-section {
+                padding: 90px 0;
             }
         }
         
         @media (max-width: 850px) {
-            .features-logos {
-                flex-wrap: wrap;
-            }
-            
-            .feature-item {
-                width: 50%;
-                height: 100px;
-                margin-bottom: 0;
-                padding: 10px 15px;
-            }
-            
-            .feature-item:nth-child(2)::after {
-                display: none;
-            }
-            
-            .feature-logo {
-                width: 140px;
-                height: 70px;
-            }
-            
             .hero-section {
                 padding: 25px 0 15px 0;
+            }
+            
+            .sponsors-logos {
+                gap: 50px;
             }
         }
         
@@ -1208,12 +836,8 @@
                 height: 300px;
             }
             
-            .hero-title {
+            .hero-title, .hero-subtitle-text {
                 font-size: 1.7rem;
-            }
-            
-            .hero-subtitle-text {
-                font-size: 1.1rem;
             }
             
             .hero-description {
@@ -1221,11 +845,7 @@
             }
             
             .calendly-title {
-                font-size: 2rem;
-            }
-            
-            .calendly-subtitle {
-                font-size: 1.1rem;
+                font-size: 1.8rem;
             }
             
             .section-title, .description-title, .final-title {
@@ -1233,7 +853,7 @@
             }
             
             .calendly-container {
-                padding: 35px 20px;
+                padding: 30px 15px;
             }
             
             .brand-footer {
@@ -1249,36 +869,40 @@
             .contact-item {
                 min-width: 160px;
             }
+            
+            .message-text {
+                font-size: 1.1rem;
+            }
+            
+            .home-message-title {
+                font-size: 1.7rem;
+            }
+            
+            .home-message-subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .home-message-text {
+                font-size: 1.1rem;
+            }
+            
+            .sponsor-logo {
+                height: 100px;
+                max-width: 230px;
+            }
+            
+            .sponsors-logos {
+                gap: 50px;
+            }
+            
+            .sponsors-section {
+                padding: 80px 0;
+            }
         }
         
         @media (max-width: 650px) {
-            .features-logos {
-                flex-direction: column;
-                padding-top: 20px;
-            }
-            
-            .feature-item {
-                width: 100%;
-                height: 85px;
-                margin-bottom: 0;
-                padding: 8px 10px;
-            }
-            
-            .feature-item::after {
-                display: none;
-            }
-            
-            .feature-logo {
-                width: 150px;
-                height: 70px;
-            }
-            
-            .hero-title {
+            .hero-title, .hero-subtitle-text {
                 font-size: 1.5rem;
-            }
-            
-            .hero-subtitle-text {
-                font-size: 1rem;
             }
             
             .hero-description {
@@ -1286,11 +910,7 @@
             }
             
             .calendly-title {
-                font-size: 1.8rem;
-            }
-            
-            .calendly-subtitle {
-                font-size: 1rem;
+                font-size: 1.6rem;
             }
             
             .hero-subtitle {
@@ -1303,11 +923,6 @@
                 max-width: 130px;
             }
             
-            .description-title::before,
-            .description-title::after {
-                display: none;
-            }
-            
             .contact-info {
                 flex-direction: column;
                 align-items: center;
@@ -1317,6 +932,36 @@
                 width: 100%;
                 max-width: 250px;
             }
+            
+            .message-text {
+                font-size: 1rem;
+            }
+            
+            .home-message-title {
+                font-size: 1.5rem;
+            }
+            
+            .home-message-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .home-message-text {
+                font-size: 1rem;
+            }
+            
+            .sponsor-logo {
+                height: 90px;
+                max-width: 200px;
+            }
+            
+            .sponsors-logos {
+                gap: 40px;
+                flex-direction: column;
+            }
+            
+            .sponsors-section {
+                padding: 70px 0;
+            }
         }
         
         @media (max-width: 580px) {
@@ -1324,12 +969,8 @@
                 height: 250px;
             }
             
-            .hero-title {
+            .hero-title, .hero-subtitle-text {
                 font-size: 1.4rem;
-            }
-            
-            .hero-subtitle-text {
-                font-size: 0.95rem;
             }
             
             .hero-description {
@@ -1337,11 +978,7 @@
             }
             
             .calendly-title {
-                font-size: 1.6rem;
-            }
-            
-            .calendly-subtitle {
-                font-size: 0.95rem;
+                font-size: 1.4rem;
             }
             
             .section-title, .description-title, .final-title {
@@ -1349,7 +986,7 @@
             }
             
             .calendly-container {
-                padding: 30px 15px;
+                padding: 25px 10px;
             }
             
             .scroll-top {
@@ -1363,6 +1000,39 @@
             .hero-section {
                 padding: 20px 0 10px 0;
             }
+            
+            .message-section, .home-message-section {
+                padding: 40px 0;
+            }
+            
+            .message-text {
+                font-size: 0.95rem;
+            }
+            
+            .home-message-title {
+                font-size: 1.4rem;
+            }
+            
+            .home-message-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .home-message-text {
+                font-size: 0.95rem;
+            }
+            
+            .sponsor-logo {
+                height: 80px;
+                max-width: 180px;
+            }
+            
+            .sponsors-logos {
+                gap: 35px;
+            }
+            
+            .sponsors-section {
+                padding: 60px 0;
+            }
         }
         
         @media (max-width: 480px) {
@@ -1370,12 +1040,8 @@
                 height: 220px;
             }
             
-            .hero-title {
+            .hero-title, .hero-subtitle-text {
                 font-size: 1.3rem;
-            }
-            
-            .hero-subtitle-text {
-                font-size: 0.9rem;
             }
             
             .hero-description {
@@ -1383,11 +1049,7 @@
             }
             
             .calendly-title {
-                font-size: 1.5rem;
-            }
-            
-            .calendly-subtitle {
-                font-size: 0.9rem;
+                font-size: 1.3rem;
             }
             
             .section-title, .description-title, .final-title {
@@ -1410,15 +1072,40 @@
             .value-item {
                 padding: 12px;
             }
+            
+            .message-text {
+                font-size: 0.9rem;
+            }
+            
+            .home-message-title {
+                font-size: 1.3rem;
+            }
+            
+            .home-message-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .home-message-text {
+                font-size: 0.9rem;
+            }
+            
+            .sponsor-logo {
+                height: 70px;
+                max-width: 160px;
+            }
+            
+            .sponsors-logos {
+                gap: 30px;
+            }
+            
+            .sponsors-section {
+                padding: 50px 0;
+            }
         }
         
         @media (max-width: 380px) {
-            .hero-title {
+            .hero-title, .hero-subtitle-text {
                 font-size: 1.2rem;
-            }
-            
-            .hero-subtitle-text {
-                font-size: 0.85rem;
             }
             
             .hero-description {
@@ -1426,16 +1113,7 @@
             }
             
             .calendly-title {
-                font-size: 1.4rem;
-            }
-            
-            .calendly-subtitle {
-                font-size: 0.85rem;
-            }
-            
-            .feature-logo {
-                width: 130px;
-                height: 65px;
+                font-size: 1.2rem;
             }
             
             .hero-subtitle {
@@ -1447,6 +1125,35 @@
                 height: 40px;
                 font-size: 1.1rem;
             }
+            
+            .message-text {
+                font-size: 0.85rem;
+            }
+            
+            .home-message-title {
+                font-size: 1.2rem;
+            }
+            
+            .home-message-subtitle {
+                font-size: 1rem;
+            }
+            
+            .home-message-text {
+                font-size: 0.85rem;
+            }
+            
+            .sponsor-logo {
+                height: 60px;
+                max-width: 140px;
+            }
+            
+            .sponsors-logos {
+                gap: 25px;
+            }
+            
+            .sponsors-section {
+                padding: 40px 0;
+            }
         }
     </style>
 </head>
@@ -1457,13 +1164,13 @@
         <div class="loading-text">Abedul Apartamentos</div>
     </div>
     
-    <!-- Botón flotante para agendar cita - NUEVO -->
+    <!-- Botón flotante para agendar cita -->
     <a href="#agendar-cita" class="floating-button" id="floatingButton" title="Agendar cita ahora">
-        <div class="button-icon">📅</div>
+        <div class="calendar-icon">📅</div>
         <div class="button-text">Agendar</div>
     </a>
     
-    <!-- Hero Section - CON EFECTOS -->
+    <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
@@ -1477,10 +1184,10 @@
                     <h1 class="hero-title">Un lugar que se sienta bien.</h1>
                     <div class="hero-subtitle-text">Vivir cómodo junto a lo que más importa: tu familia.</div>
                     <div class="hero-description">Suites, departamentos de 2 y 3 dormitorios en excelente ubicación en Quito</div>
+                    <div class="hero-button-container">
+                        <a href="#agendar-cita" class="agendar-btn">Agenda tu visita</a>
+                    </div>
                 </div>
-                
-                <div class="features-logos">
-                    <div class="feature-item">
             </div>
         </div>
     </section>
@@ -1488,9 +1195,7 @@
     <!-- Sección del carrusel -->
     <section class="carousel-section">
         <div class="container">
-            <div style="text-align: center;">
-                <h2 class="section-title">Descubre Nuestros Espacios</h2>
-            </div>
+            <h2 class="section-title">Descubre Nuestros Espacios</h2>
             <div class="carousel-container">
                 <div class="carousel">
                     <div class="carousel-item">
@@ -1520,6 +1225,19 @@
             <div class="description-content">
                 <h2 class="description-title">Hay muchas opciones de departamentos. Nosotros te ayudamos a saber si Abedul es el tuyo.</h2>
                 <p class="description-text">Abedul no es lujo ni promesas exageradas: es comodidad real, buenos acabados y una ubicación práctica para el día a día.</p>
+                <div class="description-button">
+                    <a href="#agendar-cita" class="agendar-btn">Agenda tu reunión gratuita</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Primera sección de mensaje -->
+    <section class="message-section">
+        <div class="message-content">
+            <p class="message-text">No vendemos sueños inalcanzables ni exageramos beneficios.<br>Ofrecemos hogares reales para familias que buscan estabilidad y seguridad, con un acompañamiento claro y responsable.</p>
+            <div style="margin-top: 30px;">
+                <a href="#agendar-cita" class="agendar-btn" style="background-color: var(--primary-brown);">Conocer más</a>
             </div>
         </div>
     </section>
@@ -1539,6 +1257,19 @@
                 <p class="calendly-note">
                     <i class="fas fa-info-circle"></i> Después de agendar tu cita, recibirás un correo de confirmación con todos los detalles.
                 </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- NUEVA SECCIÓN DESPUÉS DE CALENDLY -->
+    <section class="home-message-section">
+        <div class="home-message-content">
+            <h2 class="home-message-title">Un HOGAR propio cambia la vida de una familia.</h2>
+            <h3 class="home-message-subtitle">ABEDUL existe para que ese paso sea posible, claro y seguro.</h3>
+            <p class="home-message-text">Garantizamos claridad, acompañamiento y procesos transparentes.</p>
+            <p class="home-message-text">Desde el primer contacto sabrás si este proyecto es para tu familia y cómo avanzar sin sorpresas.</p>
+            <div style="margin-top: 40px;">
+                <a href="#agendar-cita" class="agendar-btn" style="background-color: var(--primary-brown);">Agendar ahora</a>
             </div>
         </div>
     </section>
@@ -1580,6 +1311,7 @@
                         <div class="contact-item">
                             <div class="contact-icon">🌐</div>
                             <div class="contact-text">Conoce el proyecto</div>
+                            <a href="#agendar-cita" class="agendar-btn" style="margin-top: 15px; padding: 10px 15px; font-size: 0.9rem;">Agendar visita</a>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📩</div>
@@ -1587,9 +1319,21 @@
                                 Contáctenos:<br>
                                 <a href="mailto:abeduldepartamentos@outlook.com" class="contact-link">abeduldepartamentos@outlook.com</a>
                             </div>
+                            <a href="#agendar-cita" class="agendar-btn" style="margin-top: 15px; padding: 10px 15px; font-size: 0.9rem;">Agendar ahora</a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sección de logos de auspiciantes - MOVIDA AL FINAL, ANTES DEL FOOTER -->
+    <section class="sponsors-section">
+        <div class="sponsors-content">
+            <div class="sponsors-logos">
+                <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1766691294/4_pplwqm.png" alt="Logo Auspiciante 1" class="sponsor-logo">
+                <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1766691295/5_hspvii.png" alt="Logo Auspiciante 2" class="sponsor-logo">
+                <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1766691294/6_pgkvcx.png" alt="Logo Auspiciante 3" class="sponsor-logo">
             </div>
         </div>
     </section>
@@ -1648,16 +1392,6 @@
             updateIndicators();
         }
         
-        // Pausar carrusel al pasar el mouse
-        const carouselContainer = document.querySelector('.carousel-container');
-        carouselContainer.addEventListener('mouseenter', () => {
-            clearInterval(carouselInterval);
-        });
-        
-        carouselContainer.addEventListener('mouseleave', () => {
-            startCarousel();
-        });
-        
         // Crear indicadores del carrusel
         function createIndicators() {
             const indicatorsContainer = document.getElementById('carousel-indicators');
@@ -1710,157 +1444,14 @@
             });
         });
         
-        // Botón flotante para agendar cita
-        const floatingButton = document.getElementById('floatingButton');
-        
-        // Función para animar el botón flotante
-        function animateFloatingButton() {
-            floatingButton.style.animation = 'pulse-strong 2s infinite';
-        }
-        
-        // Animaciones al hacer scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-        
-        // Observar elementos con animaciones
-        document.querySelectorAll('.value-item, .contact-item, .description-content, .calendly-container, .final-content').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // Efecto de escritura en el título principal (opcional)
-        const heroTitle = document.querySelector('.hero-title');
-        const heroSubtitle = document.querySelector('.hero-subtitle-text');
-        const heroDescription = document.querySelector('.hero-description');
-        const calendlyTitle = document.querySelector('.calendly-title');
-        
-        const originalTitle = heroTitle.textContent;
-        const originalSubtitle = heroSubtitle.textContent;
-        const originalDescription = heroDescription.textContent;
-        const originalCalendlyTitle = calendlyTitle.textContent;
-        
-        heroTitle.textContent = '';
-        heroSubtitle.textContent = '';
-        heroDescription.textContent = '';
-        calendlyTitle.textContent = '';
-        
-        let i = 0, j = 0, k = 0, l = 0;
-        
-        function typeWriterTitle() {
-            if (i < originalTitle.length) {
-                heroTitle.textContent += originalTitle.charAt(i);
-                i++;
-                setTimeout(typeWriterTitle, 50);
-            } else if (j === 0) {
-                setTimeout(typeWriterSubtitle, 300);
-            }
-        }
-        
-        function typeWriterSubtitle() {
-            if (j < originalSubtitle.length) {
-                heroSubtitle.textContent += originalSubtitle.charAt(j);
-                j++;
-                setTimeout(typeWriterSubtitle, 40);
-            } else if (k === 0) {
-                setTimeout(typeWriterDescription, 300);
-            }
-        }
-        
-        function typeWriterDescription() {
-            if (k < originalDescription.length) {
-                heroDescription.textContent += originalDescription.charAt(k);
-                k++;
-                setTimeout(typeWriterDescription, 30);
-            } else if (l === 0) {
-                setTimeout(typeWriterCalendly, 1000);
-            }
-        }
-        
-        function typeWriterCalendly() {
-            if (l < originalCalendlyTitle.length) {
-                calendlyTitle.textContent += originalCalendlyTitle.charAt(l);
-                l++;
-                setTimeout(typeWriterCalendly, 40);
-            }
-        }
-        
         // Iniciar efectos después de la carga
         function init() {
             createIndicators();
             startCarousel();
-            
-            // Iniciar efecto de escritura después de un breve retraso
-            setTimeout(() => {
-                typeWriterTitle();
-            }, 500);
-            
-            // Inicializar animaciones de elementos
-            document.querySelectorAll('.feature-item, .value-item').forEach((item, index) => {
-                item.style.animationDelay = `${index * 0.1}s`;
-            });
-            
-            // Iniciar animación del botón flotante
-            animateFloatingButton();
         }
         
         // Ejecutar inicialización al cargar la página
         init();
-        
-        // Efecto de confeti al hacer clic en el logo
-        const heroLogo = document.querySelector('.hero-logo');
-        heroLogo.addEventListener('click', () => {
-            createConfetti();
-        });
-        
-        function createConfetti() {
-            const colors = ['#dec68c', '#36ae71', '#3f4b5e', '#ffffff'];
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.style.position = 'fixed';
-                confetti.style.width = '10px';
-                confetti.style.height = '10px';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.borderRadius = '50%';
-                confetti.style.top = '50%';
-                confetti.style.left = '50%';
-                confetti.style.zIndex = '9999';
-                confetti.style.pointerEvents = 'none';
-                
-                const angle = Math.random() * Math.PI * 2;
-                const velocity = 2 + Math.random() * 3;
-                const vx = Math.cos(angle) * velocity;
-                const vy = Math.sin(angle) * velocity;
-                
-                let x = 50;
-                let y = 50;
-                
-                document.body.appendChild(confetti);
-                
-                const confettiInterval = setInterval(() => {
-                    x += vx;
-                    y += vy;
-                    vy += 0.1; // gravedad
-                    
-                    confetti.style.left = `${x}%`;
-                    confetti.style.top = `${y}%`;
-                    confetti.style.opacity = (100 - (y - 50)) / 100;
-                    
-                    if (y > 150) {
-                        clearInterval(confettiInterval);
-                        confetti.remove();
-                    }
-                }, 20);
-            }
-        }
     </script>
 </body>
 </html>
