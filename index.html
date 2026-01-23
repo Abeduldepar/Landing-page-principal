@@ -34,13 +34,13 @@
         body {
             background-color: var(--white);
             color: var(--navy-blue);
-            line-height: 1.8;
+            line-height: 1.6;
             min-height: 100vh;
             /* Tipografía según manual: Avenir para textos */
             font-family: 'Avenir', 'Open Sans', sans-serif;
             font-weight: 400;
             overflow-x: hidden;
-            font-size: 18px; /* TEXTO BASE MÁS GRANDE */
+            font-size: 16px; /* TEXTO BASE PARA MÓVIL */
         }
         
         /* Tipografía ADA HYBRID para títulos (según manual) */
@@ -54,38 +54,39 @@
         }
         
         .container {
-            max-width: 1400px; /* CONTENEDOR MÁS ANCHO */
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 30px; /* MÁS PADDING LATERAL */
+            padding: 0 20px; /* MENOS PADDING EN MÓVIL */
+            width: 100%;
         }
         
-        /* BOTÓN FLOTANTE - SOLO ICONO DE CALENDARIO */
+        /* BOTÓN FLOTANTE - OPTIMIZADO PARA MÓVIL */
         .floating-button {
             position: fixed;
-            bottom: 40px;
-            left: 40px;
-            width: 85px;
-            height: 85px;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
             background: var(--primary-brown);
             color: var(--navy-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.8rem;
+            font-size: 1.8rem;
             cursor: pointer;
             z-index: 1001;
-            box-shadow: 0 8px 25px rgba(222, 198, 140, 0.5);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 12px rgba(222, 198, 140, 0.5);
+            transition: all 0.3s ease;
             text-decoration: none;
             text-align: center;
-            border: 3px solid var(--white);
+            border: 2px solid var(--white);
             overflow: hidden;
         }
         
         .floating-button:hover {
-            transform: scale(1.15) translateY(-5px);
-            box-shadow: 0 12px 30px rgba(222, 198, 140, 0.7);
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 6px 15px rgba(222, 198, 140, 0.7);
             background: var(--dark-brown);
             color: var(--white);
         }
@@ -94,12 +95,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
+            width: 30px;
+            height: 30px;
         }
         
         .calendar-icon i {
-            font-size: 2.8rem;
+            font-size: 1.8rem;
             transition: all 0.3s ease;
         }
         
@@ -107,56 +108,33 @@
             transform: scale(1.1);
         }
         
-        .floating-button-pulse {
-            position: absolute;
-            width: 95px;
-            height: 95px;
-            background: var(--navy-blue);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-            z-index: -1;
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(0.9);
-                opacity: 0.6;
-            }
-            70% {
-                transform: scale(1.2);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(0.9);
-                opacity: 0;
-            }
-        }
-        
-        /* BOTÓN DE AGENDAR GENERAL - COLORES DE ABEDUL */
+        /* BOTÓN DE AGENDAR GENERAL - OPTIMIZADO PARA MÓVIL */
         .agendar-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
             color: var(--white);
-            padding: 22px 45px;
-            border-radius: 12px;
+            padding: 16px 25px;
+            border-radius: 10px;
             text-decoration: none;
             font-family: 'ADA', 'Montserrat', sans-serif;
             font-weight: 800;
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
             border: none;
             cursor: pointer;
-            margin-top: 20px;
-            box-shadow: 0 8px 25px rgba(63, 75, 94, 0.4);
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(63, 75, 94, 0.3);
             position: relative;
             overflow: hidden;
-            min-width: 280px;
+            min-width: 220px;
             text-align: center;
-            border: 3px solid transparent;
+            border: 2px solid transparent;
+            width: 100%;
+            max-width: 300px;
         }
         
         .agendar-btn:before {
@@ -167,7 +145,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
-            transition: left 0.5s ease;
+            transition: left 0.4s ease;
             z-index: 1;
         }
         
@@ -177,8 +155,8 @@
         }
         
         .agendar-btn:hover {
-            transform: translateY(-8px) scale(1.08);
-            box-shadow: 0 15px 35px rgba(222, 198, 140, 0.5);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(222, 198, 140, 0.4);
             color: var(--white);
             border-color: var(--white);
         }
@@ -187,27 +165,27 @@
             left: 0;
         }
         
-        /* BOTÓN EN HERO - MARRÓN (CORREGIDO) */
+        /* BOTÓN EN HERO - OPTIMIZADO PARA MÓVIL */
         .hero-button-container .agendar-btn {
-            padding: 26px 55px;
-            font-size: 1.7rem;
-            margin-top: 35px;
-            min-width: 320px;
-            border-radius: 15px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown)); /* MARRÓN */
-            color: var(--navy-blue); /* TEXTO AZUL MARINO */
+            padding: 18px 30px;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            min-width: 250px;
+            border-radius: 12px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
+            color: var(--navy-blue);
         }
         
         .hero-button-container .agendar-btn:before {
-            background: linear-gradient(135deg, var(--navy-blue), var(--light-navy)); /* AZUL EN HOVER */
+            background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
         }
         
         .hero-button-container .agendar-btn:hover {
-            color: var(--white); /* TEXTO BLANCO EN HOVER */
+            color: var(--white);
         }
         
-        /* Botones sobre fondo azul - COLORES DE ABEDUL (MARRÓN) */
+        /* Botones sobre fondo azul - OPTIMIZADOS */
         .message-section .agendar-btn,
         .home-message-section .agendar-btn {
             background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
@@ -220,7 +198,7 @@
             color: var(--white);
         }
         
-        /* Botones sobre fondo claro - AZUL MARINO */
+        /* Botones sobre fondo claro */
         .description-section .agendar-btn,
         .final-cta .agendar-btn {
             background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
@@ -233,123 +211,11 @@
             color: var(--navy-blue);
         }
         
-        /* Versión alternativa en pantallas pequeñas */
-        @media (max-width: 768px) {
-            body {
-                font-size: 16px;
-            }
-            
-            .container {
-                padding: 0 20px;
-                max-width: 100%;
-            }
-            
-            .floating-button {
-                width: 75px;
-                height: 75px;
-                bottom: 25px;
-                left: 25px;
-            }
-            
-            .calendar-icon i {
-                font-size: 2.5rem;
-            }
-            
-            .floating-button-pulse {
-                width: 85px;
-                height: 85px;
-            }
-            
-            .agendar-btn {
-                padding: 20px 35px;
-                font-size: 1.3rem;
-                min-width: 250px;
-            }
-            
-            .hero-button-container .agendar-btn {
-                padding: 22px 40px;
-                font-size: 1.4rem;
-                min-width: 280px;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle-text {
-                font-size: 2rem;
-            }
-            
-            .hero-description {
-                font-size: 1.3rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 0.9rem;
-                letter-spacing: 3px;
-            }
-            
-            .section-title, .description-title, .final-title {
-                font-size: 1.8rem;
-            }
-            
-            .description-text, .final-text, .value-text, .cta-text {
-                font-size: 1.3rem;
-            }
-            
-            .message-text, .home-message-text {
-                font-size: 1.4rem;
-            }
-            
-            .calendly-title {
-                font-size: 2rem;
-            }
-            
-            .home-message-title {
-                font-size: 2rem;
-            }
-            
-            .home-message-subtitle {
-                font-size: 1.6rem;
-            }
-            
-            .carousel-container {
-                height: 350px;
-            }
-            
-            .sponsor-logo {
-                height: 120px;
-                max-width: 280px;
-            }
-            
-            .value-icon {
-                font-size: 1.5rem;
-            }
-            
-            .contact-text {
-                font-size: 1.1rem;
-            }
-            
-            .brand-name {
-                font-size: 1.5rem;
-            }
-            
-            .copyright {
-                font-size: 1rem;
-            }
-            
-            .scroll-top {
-                width: 50px;
-                height: 50px;
-                font-size: 1.5rem;
-            }
-        }
-        
-        /* Header - Primera Sección - TEXTO MÁS GRANDE */
+        /* Header - Primera Sección - OPTIMIZADO PARA MÓVIL */
         .hero-section {
             background-color: var(--navy-blue);
             color: var(--white);
-            padding: 40px 0 30px 0;
+            padding: 25px 0 20px 0;
             text-align: center;
             position: relative;
             width: 100%;
@@ -361,11 +227,11 @@
         }
         
         .hero-logo-container {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .hero-logo {
-            max-width: 180px;
+            max-width: 120px;
             height: auto;
             margin: 0 auto;
             display: block;
@@ -373,83 +239,78 @@
         }
         
         .hero-subtitle {
-            font-size: 1rem; /* MÁS GRANDE */
+            font-size: 0.7rem;
             font-weight: 400;
-            letter-spacing: 5px;
-            margin: 0 auto 20px;
+            letter-spacing: 3px;
+            margin: 0 auto 15px;
             font-family: 'ADA', 'Montserrat', sans-serif;
             text-transform: uppercase;
-            padding: 0 20px;
+            padding: 0 15px;
             color: var(--primary-brown);
         }
         
         .hero-title-container {
-            max-width: 1200px; /* MÁS ANCHO */
-            margin: 0 auto 35px;
-            padding: 0 30px;
+            max-width: 100%;
+            margin: 0 auto 25px;
+            padding: 0 15px;
         }
         
         .hero-title {
-            font-size: 3.2rem; /* MUCHO MÁS GRANDE */
+            font-size: 1.8rem;
             font-weight: 800;
             line-height: 1.2;
             color: var(--white);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-transform: uppercase;
         }
         
         .hero-subtitle-text {
-            font-size: 2.6rem; /* MÁS GRANDE */
+            font-size: 1.5rem;
             font-weight: 800;
             line-height: 1.2;
             color: var(--white);
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             font-family: 'ADA', 'Montserrat', sans-serif;
             text-transform: uppercase;
         }
         
         .hero-description {
-            font-size: 1.5rem; /* MÁS GRANDE */
+            font-size: 1rem;
             font-weight: 400;
-            line-height: 1.6;
+            line-height: 1.5;
             color: rgba(255, 255, 255, 0.9);
             font-family: 'Avenir', 'Open Sans', sans-serif;
-            max-width: 1000px;
+            max-width: 100%;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
         
-        /* Botón en hero */
-        .hero-button-container {
-            margin-top: 35px;
-        }
-        
-        /* Sección del carrusel */
+        /* Sección del carrusel - OPTIMIZADO PARA MÓVIL */
         .carousel-section {
-            padding: 70px 0; /* MÁS ESPACIO */
+            padding: 40px 0;
             background-color: var(--white);
             width: 100%;
         }
         
         .section-title {
-            font-size: 2.2rem; /* MÁS GRANDE */
-            margin-bottom: 40px;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
             color: var(--navy-blue);
             text-transform: uppercase;
             text-align: center;
-            max-width: 1200px;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
-            padding: 0 30px;
+            padding: 0 15px;
         }
         
         .carousel-container {
             position: relative;
             width: 100%;
-            height: 500px; /* MÁS ALTO */
+            height: 250px;
             overflow: hidden;
-            border-radius: 10px;
-            max-width: 1400px;
+            border-radius: 8px;
+            max-width: 100%;
             margin: 0 auto;
         }
         
@@ -475,132 +336,126 @@
         
         .carousel-indicators {
             position: absolute;
-            bottom: 30px;
+            bottom: 15px;
             left: 0;
             right: 0;
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             z-index: 10;
         }
         
         .indicator {
-            width: 16px;
-            height: 16px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background-color: rgba(255,255,255,0.5);
             cursor: pointer;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border: 1px solid transparent;
         }
         
         .indicator.active {
             background-color: var(--white);
-            transform: scale(1.3);
+            transform: scale(1.2);
             border-color: var(--navy-blue);
         }
         
-        /* Sección de descripción - TEXTO MÁS GRANDE */
+        /* Sección de descripción - OPTIMIZADO PARA MÓVIL */
         .description-section {
-            padding: 80px 0; /* MÁS ESPACIO */
+            padding: 50px 0;
             background-color: var(--light-beige);
             width: 100%;
         }
         
         .description-content {
-            max-width: 1200px; /* MÁS ANCHO */
+            max-width: 100%;
             margin: 0 auto;
             text-align: center;
-            padding: 0 30px;
+            padding: 0 15px;
         }
         
         .description-title {
-            font-size: 2.2rem; /* MÁS GRANDE */
-            margin-bottom: 35px;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
             color: var(--navy-blue);
             line-height: 1.3;
             text-transform: uppercase;
         }
         
         .description-text {
-            font-size: 1.5rem; /* MUCHO MÁS GRANDE */
+            font-size: 1.1rem;
             color: var(--light-navy);
-            line-height: 1.8;
-            margin-bottom: 40px;
-            max-width: 1100px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
         
-        /* Botón en descripción */
-        .description-button {
-            margin-top: 30px;
-        }
-        
-        /* Sección de mensaje - PRIMERA SECCIÓN DE MENSAJE */
+        /* Sección de mensaje - OPTIMIZADO PARA MÓVIL */
         .message-section {
             background-color: var(--navy-blue);
             color: var(--white);
-            padding: 80px 0; /* MÁS ESPACIO */
+            padding: 50px 0;
             width: 100%;
             margin: 0;
         }
         
         .message-content {
-            max-width: 1200px; /* MÁS ANCHO */
+            max-width: 100%;
             margin: 0 auto;
             text-align: center;
-            padding: 0 30px;
+            padding: 0 15px;
         }
         
         .message-text {
-            font-size: 1.8rem; /* MUCHO MÁS GRANDE */
-            line-height: 1.7;
+            font-size: 1.2rem;
+            line-height: 1.5;
             font-family: 'Avenir', 'Open Sans', sans-serif;
-            max-width: 1100px;
+            max-width: 100%;
             margin: 0 auto;
         }
         
-        /* Sección del Calendly */
+        /* Sección del Calendly - OPTIMIZADO PARA MÓVIL */
         .calendly-section {
-            padding: 80px 0; /* MÁS ESPACIO */
+            padding: 50px 0;
             background-color: var(--white);
             width: 100%;
         }
         
-        /* ID para el botón flotante */
         #agendar-cita {
             scroll-margin-top: 20px;
         }
         
         .calendly-container {
-            max-width: 1200px; /* MÁS ANCHO */
+            max-width: 100%;
             margin: 0 auto;
             background-color: var(--white);
-            border-radius: 10px;
-            padding: 50px 30px; /* MÁS PADDING */
+            border-radius: 8px;
+            padding: 30px 15px;
         }
         
         .calendly-title {
-            font-size: 2.8rem; /* MUCHO MÁS GRANDE */
-            margin-bottom: 25px;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
             color: var(--navy-blue);
             text-align: center;
             line-height: 1.2;
             text-transform: uppercase;
             font-weight: 800;
-            max-width: 1100px;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
         
         .calendly-widget-container {
             width: 100%;
             background-color: var(--white);
-            border-radius: 10px;
-            padding: 30px;
-            max-width: 1100px;
+            border-radius: 8px;
+            padding: 15px;
+            max-width: 100%;
             margin: 0 auto;
         }
         
@@ -608,66 +463,66 @@
             text-align: center;
             font-style: italic;
             color: var(--gray);
-            margin-top: 30px;
-            font-size: 1.2rem; /* MÁS GRANDE */
-            max-width: 1100px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
         
         .calendly-note i {
             color: var(--navy-blue);
-            margin-right: 10px;
-            font-size: 1.3rem;
+            margin-right: 8px;
+            font-size: 1rem;
         }
         
-        /* NUEVA SECCIÓN DESPUÉS DE CALENDLY */
+        /* NUEVA SECCIÓN DESPUÉS DE CALENDLY - OPTIMIZADO */
         .home-message-section {
             background-color: var(--navy-blue);
             color: var(--white);
-            padding: 100px 0; /* MÁS ESPACIO */
+            padding: 60px 0;
             width: 100%;
             margin: 0;
         }
         
         .home-message-content {
-            max-width: 1200px; /* MÁS ANCHO */
+            max-width: 100%;
             margin: 0 auto;
             text-align: center;
-            padding: 0 30px;
+            padding: 0 15px;
         }
         
         .home-message-title {
-            font-size: 2.8rem; /* MUCHO MÁS GRANDE */
+            font-size: 1.8rem;
             line-height: 1.3;
-            margin-bottom: 40px;
+            margin-bottom: 25px;
             font-family: 'ADA', 'Montserrat', sans-serif;
             font-weight: 800;
             text-transform: uppercase;
         }
         
         .home-message-subtitle {
-            font-size: 2.2rem; /* MÁS GRANDE */
+            font-size: 1.5rem;
             line-height: 1.4;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             font-family: 'ADA', 'Montserrat', sans-serif;
             font-weight: 700;
         }
         
         .home-message-text {
-            font-size: 1.8rem; /* MUCHO MÁS GRANDE */
-            line-height: 1.7;
+            font-size: 1.2rem;
+            line-height: 1.5;
             font-family: 'Avenir', 'Open Sans', sans-serif;
-            margin-bottom: 25px;
-            max-width: 1100px;
+            margin-bottom: 20px;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
         
-        /* Sección de logos de auspiciantes - EXTRA GRANDES */
+        /* Sección de logos de auspiciantes - OPTIMIZADO PARA MÓVIL */
         .sponsors-section {
-            padding: 120px 0;
+            padding: 60px 0;
             background-color: var(--white);
             width: 100%;
             border-top: 1px solid var(--light-gray);
@@ -675,23 +530,24 @@
         }
         
         .sponsors-content {
-            max-width: 1400px; /* MÁS ANCHO */
+            max-width: 100%;
             margin: 0 auto;
             text-align: center;
-            padding: 0 30px;
+            padding: 0 15px;
         }
         
         .sponsors-logos {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 100px;
+            gap: 40px;
             flex-wrap: wrap;
         }
         
         .sponsor-logo {
-            height: 180px; /* MÁS GRANDE */
-            max-width: 400px; /* MÁS ANCHO */
+            height: 80px;
+            max-width: 250px;
             object-fit: contain;
             filter: grayscale(0%);
             opacity: 1;
@@ -704,117 +560,118 @@
             filter: grayscale(0%) brightness(1.1);
         }
         
-        /* Sección final - TEXTO MÁS GRANDE */
+        /* Sección final - OPTIMIZADO PARA MÓVIL */
         .final-section {
-            padding: 80px 0; /* MÁS ESPACIO */
+            padding: 50px 0;
             background-color: var(--light-beige);
             width: 100%;
         }
         
         .final-content {
-            max-width: 1200px; /* MÁS ANCHO */
+            max-width: 100%;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 15px;
         }
         
         .final-title {
-            font-size: 2.2rem; /* MÁS GRANDE */
-            margin-bottom: 40px;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
             color: var(--navy-blue);
             text-align: center;
             text-transform: uppercase;
         }
         
         .final-subtitle {
-            font-size: 1.8rem; /* MÁS GRANDE */
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
             color: var(--navy-blue);
             font-weight: 600;
             text-align: center;
-            max-width: 1100px;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
         
         .final-text {
-            font-size: 1.5rem; /* MUCHO MÁS GRANDE */
+            font-size: 1.1rem;
             color: var(--light-navy);
-            line-height: 1.8;
-            margin-bottom: 35px;
+            line-height: 1.6;
+            margin-bottom: 25px;
             text-align: center;
-            max-width: 1100px;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
         
         .values-list {
-            max-width: 1100px; /* MÁS ANCHO */
-            margin: 40px auto;
+            max-width: 100%;
+            margin: 30px auto;
             text-align: left;
         }
         
         .value-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 30px;
-            padding: 20px;
+            margin-bottom: 20px;
+            padding: 15px;
             background: rgba(255, 255, 255, 0.7);
-            border-radius: 10px;
-            border-left: 5px solid var(--primary-brown);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-brown);
         }
         
         .value-icon {
             color: var(--navy-blue);
-            font-size: 1.8rem; /* MÁS GRANDE */
-            margin-right: 20px;
-            margin-top: 5px;
-            min-width: 30px;
+            font-size: 1.3rem;
+            margin-right: 15px;
+            margin-top: 3px;
+            min-width: 25px;
         }
         
         .value-text {
-            font-size: 1.5rem; /* MUCHO MÁS GRANDE */
+            font-size: 1.1rem;
             color: var(--light-navy);
-            line-height: 1.7;
+            line-height: 1.5;
             flex: 1;
         }
         
         .final-cta {
             text-align: center;
-            margin-top: 50px;
-            padding: 40px;
+            margin-top: 40px;
+            padding: 25px 15px;
             background: var(--white);
-            border-radius: 15px;
-            max-width: 1100px;
+            border-radius: 10px;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
         }
         
         .cta-title {
-            font-size: 1.8rem; /* MÁS GRANDE */
-            margin-bottom: 25px;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
             color: var(--navy-blue);
             text-transform: uppercase;
-            max-width: 1000px;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
         
         .cta-text {
-            font-size: 1.5rem; /* MÁS GRANDE */
+            font-size: 1.1rem;
             color: var(--light-navy);
-            margin-bottom: 35px;
-            line-height: 1.7;
-            max-width: 1000px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
         
         .contact-info {
             display: flex;
+            flex-direction: column;
             justify-content: center;
-            gap: 40px;
-            margin-top: 30px;
+            gap: 20px;
+            margin-top: 25px;
             flex-wrap: wrap;
         }
         
@@ -823,32 +680,34 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 25px;
-            border-radius: 12px;
+            padding: 20px;
+            border-radius: 10px;
             background: var(--white);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            min-width: 220px; /* MÁS ANCHO */
-            border: 2px solid var(--light-beige);
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            border: 1px solid var(--light-beige);
         }
         
         .contact-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
             border-color: var(--primary-brown);
         }
         
         .contact-icon {
-            font-size: 2.5rem; /* MÁS GRANDE */
+            font-size: 2rem;
             color: var(--navy-blue);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .contact-text {
-            font-size: 1.3rem; /* MÁS GRANDE */
+            font-size: 1rem;
             color: var(--light-navy);
-            margin-bottom: 15px;
-            line-height: 1.5;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
         
         .contact-link {
@@ -856,16 +715,16 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
         
         .contact-link:hover {
             color: var(--primary-brown);
         }
         
-        /* Footer */
+        /* Footer - OPTIMIZADO PARA MÓVIL */
         footer {
-            padding: 50px 0;
+            padding: 40px 0;
             background-color: var(--navy-blue);
             color: var(--white);
             text-align: center;
@@ -875,42 +734,45 @@
         .footer-content {
             position: relative;
             z-index: 1;
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 15px;
         }
         
         .brand-footer {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            max-width: 1100px;
+            gap: 20px;
+            max-width: 100%;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
         
         .brand-name {
-            font-size: 1.8rem; /* MÁS GRANDE */
+            font-size: 1.4rem;
             font-weight: bold;
             text-transform: uppercase;
             transition: all 0.3s ease;
+            text-align: center;
         }
         
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 15px;
         }
         
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 55px; /* MÁS GRANDE */
-            height: 55px;
+            width: 45px;
+            height: 45px;
             background-color: rgba(255, 255, 255, 0.1);
             color: var(--white);
-            font-size: 1.5rem; /* MÁS GRANDE */
+            font-size: 1.3rem;
             transition: all 0.3s ease;
             border-radius: 50%;
             text-decoration: none;
@@ -922,39 +784,39 @@
         }
         
         .copyright {
-            margin-top: 35px;
-            font-size: 1.1rem; /* MÁS GRANDE */
+            margin-top: 25px;
+            font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.8);
-            max-width: 1100px;
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
         
         .copyright p {
-            margin: 8px 0;
+            margin: 5px 0;
         }
         
         .ingett-credit {
             font-weight: 600;
-            margin-top: 15px;
+            margin-top: 10px;
             color: var(--primary-brown);
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
         
-        /* Botón de scroll to top */
+        /* Botón de scroll to top - OPTIMIZADO PARA MÓVIL */
         .scroll-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px; /* MÁS GRANDE */
-            height: 60px;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
             background-color: var(--primary-brown);
             color: var(--navy-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8rem; /* MÁS GRANDE */
+            font-size: 1.3rem;
             cursor: pointer;
             z-index: 1000;
             opacity: 0;
@@ -974,7 +836,7 @@
             transform: scale(1.1);
         }
         
-        /* Efecto de carga inicial */
+        /* Efecto de carga inicial - OPTIMIZADO */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -991,17 +853,204 @@
         }
         
         .loading-logo {
-            width: 140px; /* MÁS GRANDE */
+            width: 100px;
             filter: brightness(0) invert(1);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
         
         .loading-text {
             color: var(--white);
             font-family: 'ADA', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 1.8rem; /* MÁS GRANDE */
+            letter-spacing: 2px;
+            font-size: 1.3rem;
+        }
+        
+        /* MEDIA QUERIES PARA DISPOSITIVOS MÁS GRANDES */
+        @media (min-width: 768px) {
+            body {
+                font-size: 17px;
+            }
+            
+            .container {
+                padding: 0 30px;
+            }
+            
+            .floating-button {
+                width: 70px;
+                height: 70px;
+                bottom: 25px;
+                left: 25px;
+            }
+            
+            .calendar-icon i {
+                font-size: 2rem;
+            }
+            
+            .agendar-btn {
+                padding: 18px 30px;
+                font-size: 1.2rem;
+                min-width: 250px;
+                max-width: 350px;
+            }
+            
+            .hero-button-container .agendar-btn {
+                padding: 20px 35px;
+                font-size: 1.3rem;
+                min-width: 280px;
+            }
+            
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle-text {
+                font-size: 1.8rem;
+            }
+            
+            .hero-description {
+                font-size: 1.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.8rem;
+                letter-spacing: 4px;
+            }
+            
+            .section-title, .description-title, .final-title {
+                font-size: 1.8rem;
+            }
+            
+            .description-text, .final-text, .value-text, .cta-text {
+                font-size: 1.2rem;
+            }
+            
+            .message-text, .home-message-text {
+                font-size: 1.3rem;
+            }
+            
+            .calendly-title {
+                font-size: 2rem;
+            }
+            
+            .home-message-title {
+                font-size: 2rem;
+            }
+            
+            .home-message-subtitle {
+                font-size: 1.6rem;
+            }
+            
+            .carousel-container {
+                height: 350px;
+            }
+            
+            .sponsor-logo {
+                height: 100px;
+                max-width: 300px;
+            }
+            
+            .sponsors-logos {
+                flex-direction: row;
+                gap: 60px;
+            }
+            
+            .value-icon {
+                font-size: 1.5rem;
+            }
+            
+            .contact-info {
+                flex-direction: row;
+                gap: 30px;
+            }
+            
+            .contact-item {
+                width: auto;
+                min-width: 200px;
+            }
+            
+            .brand-footer {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            
+            .scroll-top {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            body {
+                font-size: 18px;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle-text {
+                font-size: 2.2rem;
+            }
+            
+            .hero-description {
+                font-size: 1.3rem;
+            }
+            
+            .section-title, .description-title, .final-title {
+                font-size: 2rem;
+            }
+            
+            .carousel-container {
+                height: 450px;
+            }
+            
+            .sponsor-logo {
+                height: 120px;
+                max-width: 350px;
+            }
+            
+            .floating-button {
+                width: 80px;
+                height: 80px;
+                bottom: 30px;
+                left: 30px;
+            }
+            
+            .calendar-icon i {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .hero-title {
+                font-size: 3.2rem;
+            }
+            
+            .hero-subtitle-text {
+                font-size: 2.6rem;
+            }
+            
+            .hero-description {
+                font-size: 1.5rem;
+            }
+            
+            .carousel-container {
+                height: 500px;
+            }
+            
+            .sponsor-logo {
+                height: 150px;
+                max-width: 400px;
+            }
+            
+            .floating-button {
+                width: 85px;
+                height: 85px;
+                bottom: 40px;
+                left: 40px;
+            }
         }
     </style>
 </head>
@@ -1014,7 +1063,6 @@
     
     <!-- Botón flotante para agendar cita - SOLO ICONO DE CALENDARIO -->
     <a href="#agendar-cita" class="floating-button" id="floatingButton" title="Agendar cita">
-        <div class="floating-button-pulse"></div>
         <div class="calendar-icon">
             <i class="fas fa-calendar-alt"></i>
         </div>
@@ -1099,7 +1147,7 @@
                 <h2 class="calendly-title">Agenda tu reunión gratuita de 30 minutos</h2>
                 <div class="calendly-widget-container">
                     <!-- Principio del widget integrado de Calendly -->
-                    <div class="calendly-inline-widget" data-url="https://calendly.com/abeduldepartamentos/60min?hide_event_type_details=1" style="min-width:320px;height:700px;"></div>
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/abeduldepartamentos/60min?hide_event_type_details=1" style="min-width:320px;height:600px;"></div>
                     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                     <!-- Final del widget integrado de Calendly -->
                 </div>
@@ -1161,7 +1209,7 @@
                         <div class="contact-item">
                             <div class="contact-icon">🌐</div>
                             <div class="contact-text">Conoce el proyecto</div>
-                            <a href="#agendar-cita" class="agendar-btn" style="margin-top: 15px; padding: 16px 25px; font-size: 1.2rem; min-width: 200px;"><span>Agendar visita</span></a>
+                            <a href="#agendar-cita" class="agendar-btn" style="margin-top: 15px; padding: 14px 20px; font-size: 1rem; min-width: 180px;"><span>Agendar visita</span></a>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📩</div>
@@ -1169,7 +1217,7 @@
                                 Contáctenos:<br>
                                 <a href="mailto:abeduldepartamentos@outlook.com" class="contact-link">abeduldepartamentos@outlook.com</a>
                             </div>
-                            <a href="#agendar-cita" class="agendar-btn" style="margin-top: 15px; padding: 16px 25px; font-size: 1.2rem; min-width: 200px;"><span>Agendar ahora</span></a>
+                            <a href="#agendar-cita" class="agendar-btn" style="margin-top: 15px; padding: 14px 20px; font-size: 1rem; min-width: 180px;"><span>Agendar ahora</span></a>
                         </div>
                     </div>
                 </div>
@@ -1177,7 +1225,7 @@
         </div>
     </section>
     
-    <!-- Sección de logos de auspiciantes - MOVIDA AL FINAL, ANTES DEL FOOTER -->
+    <!-- Sección de logos de auspiciantes -->
     <section class="sponsors-section">
         <div class="sponsors-content">
             <div class="sponsors-logos">
