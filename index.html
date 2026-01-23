@@ -412,7 +412,7 @@
             color: var(--beige); /* COLOR eee5d4 */
         }
         
-        /* Sección del Calendly - MODIFICADA PARA MÓVIL */
+        /* Sección del Calendly - MEJORADO PARA MÓVILES */
         .calendly-section {
             padding: 50px 15px;
             background-color: var(--beige); /* FONDO eee5d4 */
@@ -450,15 +450,24 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            position: relative;
+            min-height: 650px;
         }
         
-        /* ESTILOS ESPECIALES PARA EL WIDGET DE CALENDLY EN MÓVILES */
+        /* ESTILOS ESPECIALES PARA EL WIDGET DE CALENDLY - FIX PARA MÓVILES */
         .calendly-inline-widget {
             width: 100% !important;
             min-width: 100% !important;
             max-width: 100% !important;
-            height: 600px !important;
+            height: 650px !important;
             overflow: hidden !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            border: none !important;
+            background: transparent !important;
         }
         
         .calendly-note {
@@ -953,6 +962,16 @@
                 width: auto;
                 max-width: 350px;
             }
+            
+            /* Calendly para tablet */
+            .calendly-widget-container {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            .calendly-inline-widget {
+                height: 700px !important;
+            }
         }
         
         @media (min-width: 992px) {
@@ -1006,6 +1025,10 @@
                 max-width: 800px;
                 margin: 0 auto;
             }
+            
+            .calendly-inline-widget {
+                height: 750px !important;
+            }
         }
         
         @media (min-width: 1200px) {
@@ -1035,6 +1058,14 @@
                 height: 80px;
                 bottom: 30px;
                 left: 30px;
+            }
+            
+            .calendly-widget-container {
+                max-width: 900px;
+            }
+            
+            .calendly-inline-widget {
+                height: 800px !important;
             }
         }
     </style>
@@ -1125,14 +1156,14 @@
         </div>
     </section>
     
-    <!-- Sección del Calendly - AHORA CENTRADO EN MÓVILES -->
+    <!-- Sección del Calendly - AHORA BIEN CENTRADO EN MÓVILES -->
     <section class="calendly-section" id="agendar-cita">
         <div class="container">
             <div class="calendly-container">
                 <h2 class="calendly-title">Agenda tu reunión gratuita de 30 minutos</h2>
                 <div class="calendly-widget-container">
                     <!-- Principio del widget integrado de Calendly -->
-                    <div class="calendly-inline-widget" data-url="https://calendly.com/abeduldepartamentos/60min?hide_event_type_details=1" style="min-width:100%;height:600px;"></div>
+                    <div class="calendly-inline-widget" data-url="https://calendly.com/abeduldepartamentos/60min?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:100%;height:650px;"></div>
                     <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                     <!-- Final del widget integrado de Calendly -->
                 </div>
@@ -1335,6 +1366,38 @@
         
         // Ejecutar inicialización al cargar la página
         init();
+        
+        // Función para mejorar la visualización de Calendly en móviles
+        function fixCalendlyMobile() {
+            if (window.innerWidth < 768) {
+                // Forzar redimensionamiento del widget de Calendly
+                const calendlyWidget = document.querySelector('.calendly-inline-widget');
+                if (calendlyWidget) {
+                    // Aplicar estilos adicionales para móviles
+                    calendlyWidget.style.transform = 'scale(1)';
+                    calendlyWidget.style.transformOrigin = 'top left';
+                    
+                    // Asegurar que el iframe interno también se ajuste
+                    setTimeout(() => {
+                        const iframe = calendlyWidget.querySelector('iframe');
+                        if (iframe) {
+                            iframe.style.width = '100%';
+                            iframe.style.height = '100%';
+                            iframe.style.minWidth = '100%';
+                            iframe.style.maxWidth = '100%';
+                        }
+                    }, 1000);
+                }
+            }
+        }
+        
+        // Ejecutar la función de fix para Calendly después de que cargue la página
+        window.addEventListener('load', function() {
+            setTimeout(fixCalendlyMobile, 1500);
+        });
+        
+        // También ejecutar cuando cambie el tamaño de la ventana
+        window.addEventListener('resize', fixCalendlyMobile);
     </script>
 </body>
 </html>
