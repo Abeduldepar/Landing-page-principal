@@ -34,12 +34,13 @@
         body {
             background-color: var(--white);
             color: var(--navy-blue);
-            line-height: 1.7;
+            line-height: 1.8;
             min-height: 100vh;
             /* Tipografía según manual: Avenir para textos */
             font-family: 'Avenir', 'Open Sans', sans-serif;
             font-weight: 400;
             overflow-x: hidden;
+            font-size: 18px; /* TEXTO BASE MÁS GRANDE */
         }
         
         /* Tipografía ADA HYBRID para títulos (según manual) */
@@ -49,129 +50,174 @@
         .cta-title, .brand-name {
             font-family: 'ADA', 'Montserrat', sans-serif;
             font-weight: 700;
+            line-height: 1.3;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px; /* CONTENEDOR MÁS ANCHO */
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 30px; /* MÁS PADDING LATERAL */
         }
         
-        /* Botón flotante para agendar cita */
+        /* BOTÓN FLOTANTE - SOLO ICONO DE CALENDARIO */
         .floating-button {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 70px;
-            height: 70px;
-            background-color: var(--navy-blue); /* Cambiado a azul marino */
-            color: var(--white);
+            bottom: 40px;
+            left: 40px;
+            width: 85px;
+            height: 85px;
+            background: var(--primary-brown);
+            color: var(--navy-blue);
             border-radius: 50%;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 2.8rem;
             cursor: pointer;
             z-index: 1001;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(222, 198, 140, 0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
             text-align: center;
-            border: none;
+            border: 3px solid var(--white);
+            overflow: hidden;
         }
         
         .floating-button:hover {
-            transform: scale(1.1);
-            background-color: var(--primary-brown); /* Cambiado a marrón */
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-        }
-        
-        .floating-button .button-text {
-            font-size: 0.7rem;
-            font-weight: 700;
-            margin-top: 2px;
-            font-family: 'ADA', sans-serif;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
+            transform: scale(1.15) translateY(-5px);
+            box-shadow: 0 12px 30px rgba(222, 198, 140, 0.7);
+            background: var(--dark-brown);
+            color: var(--white);
         }
         
         .calendar-icon {
-            width: 32px;
-            height: 32px;
-            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
         }
         
-        /* Botón de agendar cita general */
+        .calendar-icon i {
+            font-size: 2.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .floating-button:hover .calendar-icon i {
+            transform: scale(1.1);
+        }
+        
+        .floating-button-pulse {
+            position: absolute;
+            width: 95px;
+            height: 95px;
+            background: var(--navy-blue);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            z-index: -1;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.6;
+            }
+            70% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+        }
+        
+        /* BOTÓN DE AGENDAR GENERAL - COLORES DE ABEDUL */
         .agendar-btn {
-            display: inline-block;
-            background-color: var(--navy-blue); /* Azul marino */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
             color: var(--white);
-            padding: 12px 25px;
-            border-radius: 5px;
+            padding: 22px 45px;
+            border-radius: 12px;
             text-decoration: none;
             font-family: 'ADA', 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
+            font-weight: 800;
+            font-size: 1.5rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
+            letter-spacing: 1.5px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: none;
             cursor: pointer;
-            margin-top: 10px;
+            margin-top: 20px;
+            box-shadow: 0 8px 25px rgba(63, 75, 94, 0.4);
+            position: relative;
+            overflow: hidden;
+            min-width: 280px;
+            text-align: center;
+            border: 3px solid transparent;
+        }
+        
+        .agendar-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
+            transition: left 0.5s ease;
+            z-index: 1;
+        }
+        
+        .agendar-btn span {
+            position: relative;
+            z-index: 2;
         }
         
         .agendar-btn:hover {
-            background-color: var(--primary-brown); /* Marrón en hover */
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px) scale(1.08);
+            box-shadow: 0 15px 35px rgba(222, 198, 140, 0.5);
+            color: var(--white);
+            border-color: var(--white);
         }
         
-        /* Versión alternativa en pantallas pequeñas */
-        @media (max-width: 768px) {
-            .floating-button {
-                width: 60px;
-                height: 60px;
-                bottom: 20px;
-                left: 20px;
-            }
-            
-            .floating-button .button-text {
-                font-size: 0.6rem;
-            }
-            
-            .calendar-icon {
-                width: 28px;
-                height: 28px;
-            }
-            
-            .agendar-btn {
-                padding: 10px 20px;
-                font-size: 1rem;
-            }
+        .agendar-btn:hover:before {
+            left: 0;
         }
         
-        @media (max-width: 480px) {
-            .floating-button {
-                width: 55px;
-                height: 55px;
-                bottom: 15px;
-                left: 15px;
-            }
-            
-            .calendar-icon {
-                width: 24px;
-                height: 24px;
-            }
+        /* Botón en hero - MÁS GRANDE Y DESTACADO */
+        .hero-button-container .agendar-btn {
+            padding: 26px 55px;
+            font-size: 1.7rem;
+            margin-top: 35px;
+            min-width: 320px;
+            border-radius: 15px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
         }
         
-        /* Header - Primera Sección */
+        /* Botones sobre fondo azul - COLORES DE ABEDUL (MARRÓN) */
+        .message-section .agendar-btn,
+        .home-message-section .agendar-btn {
+            background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
+            color: var(--navy-blue);
+        }
+        
+        .message-section .agendar-btn:hover,
+        .home-message-section .agendar-btn:hover {
+            background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
+            color: var(--white);
+        }
+        
+        /* Header - Primera Sección - TEXTO MÁS GRANDE */
         .hero-section {
             background-color: var(--navy-blue);
             color: var(--white);
-            padding: 30px 0 20px 0;
+            padding: 40px 0 30px 0;
             text-align: center;
             position: relative;
+            width: 100%;
         }
         
         .hero-content {
@@ -180,11 +226,11 @@
         }
         
         .hero-logo-container {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .hero-logo {
-            max-width: 150px;
+            max-width: 180px;
             height: auto;
             margin: 0 auto;
             display: block;
@@ -192,10 +238,10 @@
         }
         
         .hero-subtitle {
-            font-size: 0.8rem;
+            font-size: 1rem; /* MÁS GRANDE */
             font-weight: 400;
-            letter-spacing: 4px;
-            margin: 0 auto 15px;
+            letter-spacing: 5px;
+            margin: 0 auto 20px;
             font-family: 'ADA', 'Montserrat', sans-serif;
             text-transform: uppercase;
             padding: 0 20px;
@@ -203,65 +249,73 @@
         }
         
         .hero-title-container {
-            max-width: 900px;
-            margin: 0 auto 25px;
-            padding: 0 20px;
+            max-width: 1200px; /* MÁS ANCHO */
+            margin: 0 auto 35px;
+            padding: 0 30px;
         }
         
         .hero-title {
-            font-size: 2.2rem;
+            font-size: 3.2rem; /* MUCHO MÁS GRANDE */
             font-weight: 800;
             line-height: 1.2;
             color: var(--white);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             text-transform: uppercase;
         }
         
         .hero-subtitle-text {
-            font-size: 2.2rem; /* Mismo tamaño que el título */
-            font-weight: 800; /* Misma negrita que el título */
+            font-size: 2.6rem; /* MÁS GRANDE */
+            font-weight: 800;
             line-height: 1.2;
             color: var(--white);
-            margin-bottom: 15px;
-            font-family: 'ADA', 'Montserrat', sans-serif; /* Misma fuente ADA */
+            margin-bottom: 25px;
+            font-family: 'ADA', 'Montserrat', sans-serif;
             text-transform: uppercase;
         }
         
         .hero-description {
-            font-size: 1.1rem;
+            font-size: 1.5rem; /* MÁS GRANDE */
             font-weight: 400;
-            line-height: 1.5;
-            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
             font-family: 'Avenir', 'Open Sans', sans-serif;
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
+            padding: 0 20px;
         }
         
         /* Botón en hero */
         .hero-button-container {
-            margin-top: 25px;
+            margin-top: 35px;
         }
         
         /* Sección del carrusel */
         .carousel-section {
-            padding: 50px 0;
+            padding: 70px 0; /* MÁS ESPACIO */
             background-color: var(--white);
+            width: 100%;
         }
         
         .section-title {
-            font-size: 1.6rem;
-            margin-bottom: 25px;
+            font-size: 2.2rem; /* MÁS GRANDE */
+            margin-bottom: 40px;
             color: var(--navy-blue);
             text-transform: uppercase;
             text-align: center;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 30px;
         }
         
         .carousel-container {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 500px; /* MÁS ALTO */
             overflow: hidden;
-            border-radius: 8px;
+            border-radius: 10px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
         .carousel {
@@ -286,18 +340,18 @@
         
         .carousel-indicators {
             position: absolute;
-            bottom: 25px;
+            bottom: 30px;
             left: 0;
             right: 0;
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             z-index: 10;
         }
         
         .indicator {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             background-color: rgba(255,255,255,0.5);
             cursor: pointer;
@@ -308,67 +362,75 @@
         .indicator.active {
             background-color: var(--white);
             transform: scale(1.3);
-            border-color: var(--navy-blue); /* Cambiado a azul marino */
+            border-color: var(--navy-blue);
         }
         
-        /* Sección de descripción */
+        /* Sección de descripción - TEXTO MÁS GRANDE */
         .description-section {
-            padding: 60px 0;
+            padding: 80px 0; /* MÁS ESPACIO */
             background-color: var(--light-beige);
+            width: 100%;
         }
         
         .description-content {
-            max-width: 900px;
+            max-width: 1200px; /* MÁS ANCHO */
             margin: 0 auto;
             text-align: center;
+            padding: 0 30px;
         }
         
         .description-title {
-            font-size: 1.6rem;
-            margin-bottom: 25px;
+            font-size: 2.2rem; /* MÁS GRANDE */
+            margin-bottom: 35px;
             color: var(--navy-blue);
             line-height: 1.3;
             text-transform: uppercase;
         }
         
         .description-text {
-            font-size: 1.1rem;
+            font-size: 1.5rem; /* MUCHO MÁS GRANDE */
             color: var(--light-navy);
             line-height: 1.8;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         /* Botón en descripción */
         .description-button {
-            margin-top: 20px;
+            margin-top: 30px;
         }
         
         /* Sección de mensaje - PRIMERA SECCIÓN DE MENSAJE */
         .message-section {
             background-color: var(--navy-blue);
             color: var(--white);
-            padding: 60px 0;
+            padding: 80px 0; /* MÁS ESPACIO */
             width: 100%;
             margin: 0;
         }
         
         .message-content {
-            max-width: 900px;
+            max-width: 1200px; /* MÁS ANCHO */
             margin: 0 auto;
             text-align: center;
-            padding: 0 20px;
+            padding: 0 30px;
         }
         
         .message-text {
-            font-size: 1.3rem;
-            line-height: 1.6;
+            font-size: 1.8rem; /* MUCHO MÁS GRANDE */
+            line-height: 1.7;
             font-family: 'Avenir', 'Open Sans', sans-serif;
+            max-width: 1100px;
+            margin: 0 auto;
         }
         
         /* Sección del Calendly */
         .calendly-section {
-            padding: 60px 0;
+            padding: 80px 0; /* MÁS ESPACIO */
             background-color: var(--white);
+            width: 100%;
         }
         
         /* ID para el botón flotante */
@@ -377,81 +439,95 @@
         }
         
         .calendly-container {
-            max-width: 900px;
+            max-width: 1200px; /* MÁS ANCHO */
             margin: 0 auto;
             background-color: var(--white);
-            border-radius: 8px;
-            padding: 40px 20px;
+            border-radius: 10px;
+            padding: 50px 30px; /* MÁS PADDING */
         }
         
         .calendly-title {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
+            font-size: 2.8rem; /* MUCHO MÁS GRANDE */
+            margin-bottom: 25px;
             color: var(--navy-blue);
             text-align: center;
             line-height: 1.2;
             text-transform: uppercase;
             font-weight: 800;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
         }
         
         .calendly-widget-container {
             width: 100%;
             background-color: var(--white);
-            border-radius: 8px;
-            padding: 20px;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
         
         .calendly-note {
             text-align: center;
             font-style: italic;
             color: var(--gray);
-            margin-top: 20px;
-            font-size: 0.95rem;
+            margin-top: 30px;
+            font-size: 1.2rem; /* MÁS GRANDE */
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
         }
         
         .calendly-note i {
-            color: var(--navy-blue); /* Cambiado a azul marino */
-            margin-right: 8px;
+            color: var(--navy-blue);
+            margin-right: 10px;
+            font-size: 1.3rem;
         }
         
         /* NUEVA SECCIÓN DESPUÉS DE CALENDLY */
         .home-message-section {
-            background-color: var(--navy-blue); /* CAMBIADO a azul marino */
+            background-color: var(--navy-blue);
             color: var(--white);
-            padding: 80px 0;
+            padding: 100px 0; /* MÁS ESPACIO */
             width: 100%;
             margin: 0;
         }
         
         .home-message-content {
-            max-width: 1000px;
+            max-width: 1200px; /* MÁS ANCHO */
             margin: 0 auto;
             text-align: center;
-            padding: 0 20px;
+            padding: 0 30px;
         }
         
         .home-message-title {
-            font-size: 2.2rem;
+            font-size: 2.8rem; /* MUCHO MÁS GRANDE */
             line-height: 1.3;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             font-family: 'ADA', 'Montserrat', sans-serif;
             font-weight: 800;
             text-transform: uppercase;
         }
         
         .home-message-subtitle {
-            font-size: 1.8rem;
+            font-size: 2.2rem; /* MÁS GRANDE */
             line-height: 1.4;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             font-family: 'ADA', 'Montserrat', sans-serif;
             font-weight: 700;
         }
         
         .home-message-text {
-            font-size: 1.4rem;
-            line-height: 1.6;
+            font-size: 1.8rem; /* MUCHO MÁS GRANDE */
+            line-height: 1.7;
             font-family: 'Avenir', 'Open Sans', sans-serif;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         /* Sección de logos de auspiciantes - EXTRA GRANDES */
@@ -464,9 +540,10 @@
         }
         
         .sponsors-content {
-            max-width: 1200px;
+            max-width: 1400px; /* MÁS ANCHO */
             margin: 0 auto;
             text-align: center;
+            padding: 0 30px;
         }
         
         .sponsors-logos {
@@ -478,8 +555,8 @@
         }
         
         .sponsor-logo {
-            height: 150px;
-            max-width: 350px;
+            height: 180px; /* MÁS GRANDE */
+            max-width: 400px; /* MÁS ANCHO */
             object-fit: contain;
             filter: grayscale(0%);
             opacity: 1;
@@ -492,95 +569,117 @@
             filter: grayscale(0%) brightness(1.1);
         }
         
-        /* Sección final */
+        /* Sección final - TEXTO MÁS GRANDE */
         .final-section {
-            padding: 60px 0;
+            padding: 80px 0; /* MÁS ESPACIO */
             background-color: var(--light-beige);
+            width: 100%;
         }
         
         .final-content {
-            max-width: 900px;
+            max-width: 1200px; /* MÁS ANCHO */
             margin: 0 auto;
+            padding: 0 30px;
         }
         
         .final-title {
-            font-size: 1.6rem;
-            margin-bottom: 30px;
+            font-size: 2.2rem; /* MÁS GRANDE */
+            margin-bottom: 40px;
             color: var(--navy-blue);
             text-align: center;
             text-transform: uppercase;
         }
         
         .final-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            font-size: 1.8rem; /* MÁS GRANDE */
+            margin-bottom: 30px;
             color: var(--navy-blue);
             font-weight: 600;
             text-align: center;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .final-text {
-            font-size: 1.1rem;
+            font-size: 1.5rem; /* MUCHO MÁS GRANDE */
             color: var(--light-navy);
             line-height: 1.8;
-            margin-bottom: 25px;
+            margin-bottom: 35px;
             text-align: center;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .values-list {
-            max-width: 700px;
-            margin: 30px auto;
+            max-width: 1100px; /* MÁS ANCHO */
+            margin: 40px auto;
             text-align: left;
         }
         
         .value-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 20px;
-            padding: 15px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-brown);
         }
         
         .value-icon {
-            color: var(--navy-blue); /* Cambiado a azul marino */
-            font-size: 1.2rem;
-            margin-right: 15px;
-            margin-top: 4px;
+            color: var(--navy-blue);
+            font-size: 1.8rem; /* MÁS GRANDE */
+            margin-right: 20px;
+            margin-top: 5px;
+            min-width: 30px;
         }
         
         .value-text {
-            font-size: 1.1rem;
+            font-size: 1.5rem; /* MUCHO MÁS GRANDE */
             color: var(--light-navy);
-            line-height: 1.6;
+            line-height: 1.7;
             flex: 1;
         }
         
         .final-cta {
             text-align: center;
-            margin-top: 40px;
-            padding: 30px;
+            margin-top: 50px;
+            padding: 40px;
             background: var(--white);
-            border-radius: 8px;
+            border-radius: 15px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
         }
         
         .cta-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+            font-size: 1.8rem; /* MÁS GRANDE */
+            margin-bottom: 25px;
             color: var(--navy-blue);
             text-transform: uppercase;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .cta-text {
-            font-size: 1.1rem;
+            font-size: 1.5rem; /* MÁS GRANDE */
             color: var(--light-navy);
-            margin-bottom: 25px;
-            line-height: 1.6;
+            margin-bottom: 35px;
+            line-height: 1.7;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
+            gap: 40px;
+            margin-top: 30px;
             flex-wrap: wrap;
         }
         
@@ -589,66 +688,74 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 20px;
-            border-radius: 8px;
+            padding: 25px;
+            border-radius: 12px;
             background: var(--white);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            min-width: 180px;
+            min-width: 220px; /* MÁS ANCHO */
+            border: 2px solid var(--light-beige);
         }
         
         .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-brown);
         }
         
         .contact-icon {
-            font-size: 2rem;
+            font-size: 2.5rem; /* MÁS GRANDE */
             color: var(--navy-blue);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .contact-text {
-            font-size: 1rem;
+            font-size: 1.3rem; /* MÁS GRANDE */
             color: var(--light-navy);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            line-height: 1.5;
         }
         
         .contact-link {
-            color: var(--navy-blue); /* Cambiado a azul marino */
+            color: var(--navy-blue);
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            font-size: 1.2rem;
         }
         
         .contact-link:hover {
-            color: var(--primary-brown); /* Cambiado a marrón */
+            color: var(--primary-brown);
         }
         
         /* Footer */
         footer {
-            padding: 40px 0;
+            padding: 50px 0;
             background-color: var(--navy-blue);
             color: var(--white);
             text-align: center;
+            width: 100%;
         }
         
         .footer-content {
             position: relative;
             z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
         }
         
         .brand-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 900px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 20px;
         }
         
         .brand-name {
-            font-size: 1.6rem;
+            font-size: 1.8rem; /* MÁS GRANDE */
             font-weight: bold;
             text-transform: uppercase;
             transition: all 0.3s ease;
@@ -657,18 +764,18 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
         }
         
         .social-links a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 45px;
-            height: 45px;
+            width: 55px; /* MÁS GRANDE */
+            height: 55px;
             background-color: rgba(255, 255, 255, 0.1);
             color: var(--white);
-            font-size: 1.3rem;
+            font-size: 1.5rem; /* MÁS GRANDE */
             transition: all 0.3s ease;
             border-radius: 50%;
             text-decoration: none;
@@ -680,19 +787,23 @@
         }
         
         .copyright {
-            margin-top: 25px;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.7);
+            margin-top: 35px;
+            font-size: 1.1rem; /* MÁS GRANDE */
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .copyright p {
-            margin: 5px 0;
+            margin: 8px 0;
         }
         
         .ingett-credit {
             font-weight: 600;
-            margin-top: 10px;
+            margin-top: 15px;
             color: var(--primary-brown);
+            font-size: 1.2rem;
         }
         
         /* Botón de scroll to top */
@@ -700,20 +811,21 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--navy-blue); /* Cambiado a azul marino */
-            color: white;
+            width: 60px; /* MÁS GRANDE */
+            height: 60px;
+            background-color: var(--primary-brown);
+            color: var(--navy-blue);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.8rem; /* MÁS GRANDE */
             cursor: pointer;
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
+            border: 2px solid var(--white);
         }
         
         .scroll-top.visible {
@@ -722,7 +834,8 @@
         }
         
         .scroll-top:hover {
-            background-color: var(--primary-brown); /* Cambiado a marrón */
+            background-color: var(--navy-blue);
+            color: var(--white);
             transform: scale(1.1);
         }
         
@@ -743,117 +856,233 @@
         }
         
         .loading-logo {
-            width: 100px;
+            width: 140px; /* MÁS GRANDE */
             filter: brightness(0) invert(1);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         
         .loading-text {
             color: var(--white);
             font-family: 'ADA', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            font-size: 1.8rem; /* MÁS GRANDE */
         }
         
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .sponsors-logos {
-                gap: 80px;
+        /* RESPONSIVE - TEXTO MÁS GRANDE EN TODAS LAS PANTALLAS */
+        
+        /* Versión alternativa en pantallas pequeñas */
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
             }
             
-            .sponsor-logo {
-                height: 130px;
-                max-width: 300px;
-            }
-        }
-        
-        @media (max-width: 1100px) {
-            .feature-item {
-                width: 180px;
-                height: 90px;
-            }
-        }
-        
-        @media (max-width: 992px) {
-            .carousel-container {
-                height: 350px;
+            .container {
+                padding: 0 20px;
+                max-width: 100%;
             }
             
-            .hero-title, .hero-subtitle-text {
-                font-size: 1.9rem;
+            .floating-button {
+                width: 75px;
+                height: 75px;
+                bottom: 25px;
+                left: 25px;
+            }
+            
+            .calendar-icon i {
+                font-size: 2.5rem;
+            }
+            
+            .floating-button-pulse {
+                width: 85px;
+                height: 85px;
+            }
+            
+            .agendar-btn {
+                padding: 20px 35px;
+                font-size: 1.3rem;
+                min-width: 250px;
+            }
+            
+            .hero-button-container .agendar-btn {
+                padding: 22px 40px;
+                font-size: 1.4rem;
+                min-width: 280px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle-text {
+                font-size: 2rem;
             }
             
             .hero-description {
-                font-size: 1rem;
+                font-size: 1.3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 3px;
+            }
+            
+            .section-title, .description-title, .final-title {
+                font-size: 1.8rem;
+            }
+            
+            .description-text, .final-text, .value-text, .cta-text {
+                font-size: 1.3rem;
+            }
+            
+            .message-text, .home-message-text {
+                font-size: 1.4rem;
             }
             
             .calendly-title {
                 font-size: 2rem;
             }
             
-            .message-text {
-                font-size: 1.2rem;
-            }
-            
             .home-message-title {
-                font-size: 1.9rem;
+                font-size: 2rem;
             }
             
             .home-message-subtitle {
                 font-size: 1.6rem;
             }
             
-            .home-message-text {
-                font-size: 1.2rem;
+            .carousel-container {
+                height: 350px;
             }
             
             .sponsor-logo {
-                height: 110px;
-                max-width: 260px;
+                height: 120px;
+                max-width: 280px;
             }
             
-            .sponsors-logos {
-                gap: 60px;
+            .value-icon {
+                font-size: 1.5rem;
             }
             
-            .sponsors-section {
-                padding: 90px 0;
+            .contact-text {
+                font-size: 1.1rem;
+            }
+            
+            .brand-name {
+                font-size: 1.5rem;
+            }
+            
+            .copyright {
+                font-size: 1rem;
+            }
+            
+            .scroll-top {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
             }
         }
         
-        @media (max-width: 850px) {
-            .hero-section {
-                padding: 25px 0 15px 0;
+        @media (max-width: 480px) {
+            body {
+                font-size: 15px;
             }
             
-            .sponsors-logos {
-                gap: 50px;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .carousel-container {
-                height: 300px;
+            .container {
+                padding: 0 15px;
             }
             
-            .hero-title, .hero-subtitle-text {
+            .floating-button {
+                width: 70px;
+                height: 70px;
+                bottom: 20px;
+                left: 20px;
+                border-width: 2px;
+            }
+            
+            .calendar-icon i {
+                font-size: 2.2rem;
+            }
+            
+            .floating-button-pulse {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .agendar-btn {
+                padding: 18px 25px;
+                font-size: 1.2rem;
+                min-width: 220px;
+            }
+            
+            .hero-button-container .agendar-btn {
+                padding: 20px 30px;
+                font-size: 1.3rem;
+                min-width: 240px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle-text {
                 font-size: 1.7rem;
             }
             
             .hero-description {
-                font-size: 0.95rem;
+                font-size: 1.1rem;
             }
             
-            .calendly-title {
-                font-size: 1.8rem;
+            .hero-subtitle {
+                font-size: 0.8rem;
+                letter-spacing: 2px;
             }
             
             .section-title, .description-title, .final-title {
+                font-size: 1.5rem;
+            }
+            
+            .description-text, .final-text, .value-text, .cta-text {
+                font-size: 1.1rem;
+            }
+            
+            .message-text, .home-message-text {
+                font-size: 1.2rem;
+            }
+            
+            .calendly-title {
+                font-size: 1.7rem;
+            }
+            
+            .home-message-title {
+                font-size: 1.7rem;
+            }
+            
+            .home-message-subtitle {
                 font-size: 1.4rem;
             }
             
-            .calendly-container {
-                padding: 30px 15px;
+            .carousel-container {
+                height: 250px;
+            }
+            
+            .sponsor-logo {
+                height: 90px;
+                max-width: 220px;
+            }
+            
+            .value-icon {
+                font-size: 1.3rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .contact-item {
+                width: 100%;
+                max-width: 300px;
             }
             
             .brand-footer {
@@ -861,298 +1090,22 @@
                 gap: 20px;
             }
             
-            .hero-subtitle {
-                font-size: 0.75rem;
-                letter-spacing: 3px;
-            }
-            
-            .contact-item {
-                min-width: 160px;
-            }
-            
-            .message-text {
-                font-size: 1.1rem;
-            }
-            
-            .home-message-title {
-                font-size: 1.7rem;
-            }
-            
-            .home-message-subtitle {
+            .brand-name {
                 font-size: 1.4rem;
-            }
-            
-            .home-message-text {
-                font-size: 1.1rem;
-            }
-            
-            .sponsor-logo {
-                height: 100px;
-                max-width: 230px;
-            }
-            
-            .sponsors-logos {
-                gap: 50px;
-            }
-            
-            .sponsors-section {
-                padding: 80px 0;
-            }
-        }
-        
-        @media (max-width: 650px) {
-            .hero-title, .hero-subtitle-text {
-                font-size: 1.5rem;
-            }
-            
-            .hero-description {
-                font-size: 0.9rem;
-            }
-            
-            .calendly-title {
-                font-size: 1.6rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 0.7rem;
-                letter-spacing: 2.5px;
-                margin-bottom: 12px;
-            }
-            
-            .hero-logo {
-                max-width: 130px;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .contact-item {
-                width: 100%;
-                max-width: 250px;
-            }
-            
-            .message-text {
-                font-size: 1rem;
-            }
-            
-            .home-message-title {
-                font-size: 1.5rem;
-            }
-            
-            .home-message-subtitle {
-                font-size: 1.3rem;
-            }
-            
-            .home-message-text {
-                font-size: 1rem;
-            }
-            
-            .sponsor-logo {
-                height: 90px;
-                max-width: 200px;
-            }
-            
-            .sponsors-logos {
-                gap: 40px;
-                flex-direction: column;
-            }
-            
-            .sponsors-section {
-                padding: 70px 0;
-            }
-        }
-        
-        @media (max-width: 580px) {
-            .carousel-container {
-                height: 250px;
-            }
-            
-            .hero-title, .hero-subtitle-text {
-                font-size: 1.4rem;
-            }
-            
-            .hero-description {
-                font-size: 0.85rem;
-            }
-            
-            .calendly-title {
-                font-size: 1.4rem;
-            }
-            
-            .section-title, .description-title, .final-title {
-                font-size: 1.25rem;
-            }
-            
-            .calendly-container {
-                padding: 25px 10px;
-            }
-            
-            .scroll-top {
-                bottom: 20px;
-                right: 20px;
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-            
-            .hero-section {
-                padding: 20px 0 10px 0;
-            }
-            
-            .message-section, .home-message-section {
-                padding: 40px 0;
-            }
-            
-            .message-text {
-                font-size: 0.95rem;
-            }
-            
-            .home-message-title {
-                font-size: 1.4rem;
-            }
-            
-            .home-message-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .home-message-text {
-                font-size: 0.95rem;
-            }
-            
-            .sponsor-logo {
-                height: 80px;
-                max-width: 180px;
-            }
-            
-            .sponsors-logos {
-                gap: 35px;
-            }
-            
-            .sponsors-section {
-                padding: 60px 0;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .carousel-container {
-                height: 220px;
-            }
-            
-            .hero-title, .hero-subtitle-text {
-                font-size: 1.3rem;
-            }
-            
-            .hero-description {
-                font-size: 0.8rem;
-            }
-            
-            .calendly-title {
-                font-size: 1.3rem;
-            }
-            
-            .section-title, .description-title, .final-title {
-                font-size: 1.2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 0.65rem;
-                letter-spacing: 2px;
-            }
-            
-            .container {
-                padding: 0 15px;
-            }
-            
-            .hero-logo {
-                max-width: 120px;
-            }
-            
-            .value-item {
-                padding: 12px;
-            }
-            
-            .message-text {
-                font-size: 0.9rem;
-            }
-            
-            .home-message-title {
-                font-size: 1.3rem;
-            }
-            
-            .home-message-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .home-message-text {
-                font-size: 0.9rem;
-            }
-            
-            .sponsor-logo {
-                height: 70px;
-                max-width: 160px;
-            }
-            
-            .sponsors-logos {
-                gap: 30px;
-            }
-            
-            .sponsors-section {
-                padding: 50px 0;
-            }
-        }
-        
-        @media (max-width: 380px) {
-            .hero-title, .hero-subtitle-text {
-                font-size: 1.2rem;
-            }
-            
-            .hero-description {
-                font-size: 0.75rem;
-            }
-            
-            .calendly-title {
-                font-size: 1.2rem;
-            }
-            
-            .hero-subtitle {
-                letter-spacing: 1.5px;
             }
             
             .social-links a {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
             }
             
-            .message-text {
-                font-size: 0.85rem;
-            }
-            
-            .home-message-title {
-                font-size: 1.2rem;
-            }
-            
-            .home-message-subtitle {
-                font-size: 1rem;
-            }
-            
-            .home-message-text {
-                font-size: 0.85rem;
-            }
-            
-            .sponsor-logo {
-                height: 60px;
-                max-width: 140px;
-            }
-            
-            .sponsors-logos {
-                gap: 25px;
-            }
-            
-            .sponsors-section {
-                padding: 40px 0;
+            .scroll-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+                bottom: 15px;
+                right: 15px;
             }
         }
     </style>
@@ -1164,10 +1117,12 @@
         <div class="loading-text">Abedul Apartamentos</div>
     </div>
     
-    <!-- Botón flotante para agendar cita -->
-    <a href="#agendar-cita" class="floating-button" id="floatingButton" title="Agendar cita ahora">
-        <div class="calendar-icon">📅</div>
-        <div class="button-text">Agendar</div>
+    <!-- Botón flotante para agendar cita - SOLO ICONO DE CALENDARIO -->
+    <a href="#agendar-cita" class="floating-button" id="floatingButton" title="Agendar cita">
+        <div class="floating-button-pulse"></div>
+        <div class="calendar-icon">
+            <i class="fas fa-calendar-alt"></i>
+        </div>
     </a>
     
     <!-- Hero Section -->
@@ -1185,7 +1140,7 @@
                     <div class="hero-subtitle-text">Vivir cómodo junto a lo que más importa: tu familia.</div>
                     <div class="hero-description">Suites, departamentos de 2 y 3 dormitorios en excelente ubicación en Quito</div>
                     <div class="hero-button-container">
-                        <a href="#agendar-cita" class="agendar-btn">Agenda tu visita</a>
+                        <a href="#agendar-cita" class="agendar-btn"><span>Agenda tu visita</span></a>
                     </div>
                 </div>
             </div>
@@ -1226,7 +1181,7 @@
                 <h2 class="description-title">Hay muchas opciones de departamentos. Nosotros te ayudamos a saber si Abedul es el tuyo.</h2>
                 <p class="description-text">Abedul no es lujo ni promesas exageradas: es comodidad real, buenos acabados y una ubicación práctica para el día a día.</p>
                 <div class="description-button">
-                    <a href="#agendar-cita" class="agendar-btn">Agenda tu reunión gratuita</a>
+                    <a href="#agendar-cita" class="agendar-btn"><span>Agenda tu reunión gratuita</span></a>
                 </div>
             </div>
         </div>
@@ -1237,7 +1192,7 @@
         <div class="message-content">
             <p class="message-text">No vendemos sueños inalcanzables ni exageramos beneficios.<br>Ofrecemos hogares reales para familias que buscan estabilidad y seguridad, con un acompañamiento claro y responsable.</p>
             <div style="margin-top: 30px;">
-                <a href="#agendar-cita" class="agendar-btn" style="background-color: var(--primary-brown);">Conocer más</a>
+                <a href="#agendar-cita" class="agendar-btn"><span>Conocer más</span></a>
             </div>
         </div>
     </section>
@@ -1269,7 +1224,7 @@
             <p class="home-message-text">Garantizamos claridad, acompañamiento y procesos transparentes.</p>
             <p class="home-message-text">Desde el primer contacto sabrás si este proyecto es para tu familia y cómo avanzar sin sorpresas.</p>
             <div style="margin-top: 40px;">
-                <a href="#agendar-cita" class="agendar-btn" style="background-color: var(--primary-brown);">Agendar ahora</a>
+                <a href="#agendar-cita" class="agendar-btn"><span>Agendar ahora</span></a>
             </div>
         </div>
     </section>
@@ -1311,7 +1266,7 @@
                         <div class="contact-item">
                             <div class="contact-icon">🌐</div>
                             <div class="contact-text">Conoce el proyecto</div>
-                            <a href="#agendar-cita" class="agendar-btn" style="margin-top: 15px; padding: 10px 15px; font-size: 0.9rem;">Agendar visita</a>
+                            <a href="#agendar-cita" class="agendar-btn" style="margin-top: 15px; padding: 16px 25px; font-size: 1.2rem; min-width: 200px;"><span>Agendar visita</span></a>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📩</div>
@@ -1319,7 +1274,7 @@
                                 Contáctenos:<br>
                                 <a href="mailto:abeduldepartamentos@outlook.com" class="contact-link">abeduldepartamentos@outlook.com</a>
                             </div>
-                            <a href="#agendar-cita" class="agendar-btn" style="margin-top: 15px; padding: 10px 15px; font-size: 0.9rem;">Agendar ahora</a>
+                            <a href="#agendar-cita" class="agendar-btn" style="margin-top: 15px; padding: 16px 25px; font-size: 1.2rem; min-width: 200px;"><span>Agendar ahora</span></a>
                         </div>
                     </div>
                 </div>
