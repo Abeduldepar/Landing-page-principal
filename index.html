@@ -16,16 +16,14 @@
         }
         
         :root {
-            /* Colores principales del manual de identidad - ACTUALIZADO */
-            --primary-brown: #dec68c;      /* Marrón Claro #dec68c */
-            --dark-brown: #c9af72;          /* Variante más oscura para hover */
-            --natural-green: #36ae71;       /* Verde Natural #36ae71 - MANTENIDO */
-            --dark-green: #2a8d5a;          /* Variante más oscura */
-            --navy-blue: #3f4b5e;           /* Azul Marino #3f4b5e */
-            --light-navy: #4a576d;          /* Variante más clara */
-            --beige: #f8f5f0;               /* Beige abedul (color secundario) */
-            --light-beige: #fefcf8;         /* Variante más clara */
-            --white: #ffffff;
+            /* NUEVOS COLORES ESPECÍFICOS */
+            --primary-brown: #5c494d;      /* Nuevo color para botones */
+            --dark-brown: #4a3a3d;          /* Variante más oscura para hover */
+            --navy-blue: #5d5741;           /* Reemplaza azul marino - color título */
+            --light-navy: #6d674b;          /* Variante más clara */
+            --beige: #eee5d4;               /* Reemplaza blanco - fondo claro */
+            --light-beige: #f5f0e6;         /* Variante más clara */
+            --white: #ffffff;               /* Blanco puro para texto en botones */
             --gray: #7f8c8d;
             --light-gray: #e8ecee;
             --off-white: #f9f9f9;
@@ -34,8 +32,8 @@
         body, html {
             width: 100%;
             overflow-x: hidden;
-            background-color: var(--white);
-            color: var(--navy-blue);
+            background-color: var(--beige); /* FONDO BEIGE EN LUGAR DE BLANCO */
+            color: var(--navy-blue);        /* TEXTO COLOR 5d5741 */
             line-height: 1.6;
             min-height: 100vh;
             /* Tipografía según manual: Avenir para textos */
@@ -50,8 +48,25 @@
         .calendly-title, .final-title, .final-subtitle,
         .cta-title, .brand-name {
             font-family: 'ADA', 'Montserrat', sans-serif;
-            font-weight: 700;
             line-height: 1.3;
+            color: var(--navy-blue); /* COLOR 5d5741 PARA TÍTULOS */
+        }
+        
+        /* ESTILO ESPECIAL PARA TÍTULO HERO - NEGRILLAS EN PALABRAS CLAVE */
+        .hero-title {
+            font-weight: 400; /* Sin negrilla general */
+        }
+        
+        .hero-title strong {
+            font-weight: 800; /* Negrilla solo para palabras específicas */
+        }
+        
+        .hero-subtitle-text {
+            font-weight: 400; /* Sin negrilla general */
+        }
+        
+        .hero-subtitle-text strong {
+            font-weight: 800; /* Negrilla solo para palabras específicas */
         }
         
         .container {
@@ -68,8 +83,8 @@
             left: 15px;
             width: 60px;
             height: 60px;
-            background: var(--primary-brown);
-            color: var(--navy-blue);
+            background: var(--primary-brown); /* COLOR 5c494d */
+            color: var(--white);              /* LETRAS BLANCAS */
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -77,16 +92,16 @@
             font-size: 1.8rem;
             cursor: pointer;
             z-index: 1001;
-            box-shadow: 0 4px 12px rgba(222, 198, 140, 0.5);
+            box-shadow: 0 4px 12px rgba(92, 73, 77, 0.5);
             transition: all 0.3s ease;
             text-decoration: none;
             text-align: center;
-            border: 2px solid var(--white);
+            border: 2px solid var(--beige);
         }
         
         .floating-button:hover {
             transform: scale(1.1) translateY(-3px);
-            box-shadow: 0 6px 15px rgba(222, 198, 140, 0.7);
+            box-shadow: 0 6px 15px rgba(92, 73, 77, 0.7);
             background: var(--dark-brown);
             color: var(--white);
         }
@@ -95,13 +110,13 @@
             font-size: 1.8rem;
         }
         
-        /* BOTÓN DE AGENDAR GENERAL */
+        /* BOTÓN DE AGENDAR GENERAL - COLOR 5c494d CON LETRAS BLANCAS */
         .agendar-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
-            color: var(--white);
+            background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
+            color: var(--white); /* LETRAS BLANCAS */
             padding: 16px 25px;
             border-radius: 10px;
             text-decoration: none;
@@ -114,7 +129,7 @@
             border: none;
             cursor: pointer;
             margin-top: 15px;
-            box-shadow: 0 4px 15px rgba(63, 75, 94, 0.3);
+            box-shadow: 0 4px 15px rgba(92, 73, 77, 0.3);
             position: relative;
             overflow: hidden;
             width: 100%;
@@ -130,7 +145,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
+            background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
             transition: left 0.4s ease;
             z-index: 1;
         }
@@ -142,9 +157,9 @@
         
         .agendar-btn:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(222, 198, 140, 0.4);
+            box-shadow: 0 8px 20px rgba(93, 87, 65, 0.4);
             color: var(--white);
-            border-color: var(--white);
+            border-color: var(--beige);
         }
         
         .agendar-btn:hover:before {
@@ -157,8 +172,8 @@
             font-size: 1.2rem;
             margin-top: 25px;
             background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
-            color: var(--navy-blue);
-            border: 3px solid rgba(255, 255, 255, 0.3);
+            color: var(--white); /* LETRAS BLANCAS */
+            border: 3px solid rgba(238, 229, 212, 0.3);
         }
         
         .hero-button-container .agendar-btn:before {
@@ -169,11 +184,11 @@
             color: var(--white);
         }
         
-        /* Botones sobre fondo azul */
+        /* Botones sobre fondo oscuro */
         .message-section .agendar-btn,
         .home-message-section .agendar-btn {
             background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
-            color: var(--navy-blue);
+            color: var(--white); /* LETRAS BLANCAS */
         }
         
         .message-section .agendar-btn:hover,
@@ -185,20 +200,20 @@
         /* Botones sobre fondo claro */
         .description-section .agendar-btn,
         .final-cta .agendar-btn {
-            background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
-            color: var(--white);
+            background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
+            color: var(--white); /* LETRAS BLANCAS */
         }
         
         .description-section .agendar-btn:hover,
         .final-cta .agendar-btn:hover {
-            background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
-            color: var(--navy-blue);
+            background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
+            color: var(--white);
         }
         
         /* Header - Primera Sección */
         .hero-section {
-            background-color: var(--navy-blue);
-            color: var(--white);
+            background-color: var(--navy-blue); /* COLOR 5d5741 */
+            color: var(--beige);                /* TEXTO COLOR eee5d4 */
             padding: 25px 15px 20px 15px;
             text-align: center;
             width: 100%;
@@ -222,7 +237,7 @@
             height: auto;
             margin: 0 auto;
             display: block;
-            filter: brightness(0) invert(1);
+            filter: brightness(0) invert(1); /* LOGO BLANCO SOBRE FONDO OSCURO */
         }
         
         .hero-subtitle {
@@ -232,7 +247,7 @@
             margin: 0 auto 15px;
             font-family: 'ADA', 'Montserrat', sans-serif;
             text-transform: uppercase;
-            color: var(--primary-brown);
+            color: var(--beige); /* COLOR eee5d4 */
             width: 100%;
         }
         
@@ -243,9 +258,8 @@
         
         .hero-title {
             font-size: 1.8rem;
-            font-weight: 800;
             line-height: 1.2;
-            color: var(--white);
+            color: var(--beige); /* COLOR eee5d4 */
             margin-bottom: 10px;
             text-transform: uppercase;
             width: 100%;
@@ -253,9 +267,8 @@
         
         .hero-subtitle-text {
             font-size: 1.5rem;
-            font-weight: 800;
             line-height: 1.2;
-            color: var(--white);
+            color: var(--beige); /* COLOR eee5d4 */
             margin-bottom: 15px;
             font-family: 'ADA', 'Montserrat', sans-serif;
             text-transform: uppercase;
@@ -266,7 +279,7 @@
             font-size: 1rem;
             font-weight: 400;
             line-height: 1.5;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(238, 229, 212, 0.9); /* COLOR eee5d4 con transparencia */
             font-family: 'Avenir', 'Open Sans', sans-serif;
             width: 100%;
             margin: 0 auto;
@@ -275,17 +288,18 @@
         /* Sección del carrusel */
         .carousel-section {
             padding: 40px 15px;
-            background-color: var(--white);
+            background-color: var(--beige); /* FONDO eee5d4 */
             width: 100%;
         }
         
         .section-title {
             font-size: 1.5rem;
             margin-bottom: 25px;
-            color: var(--navy-blue);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             text-transform: uppercase;
             text-align: center;
             width: 100%;
+            font-weight: 700; /* Negrilla para títulos de sección */
         }
         
         .carousel-container {
@@ -332,22 +346,22 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background-color: rgba(255,255,255,0.5);
+            background-color: rgba(238, 229, 212, 0.5); /* COLOR eee5d4 con transparencia */
             cursor: pointer;
             transition: all 0.3s ease;
             border: 1px solid transparent;
         }
         
         .indicator.active {
-            background-color: var(--white);
+            background-color: var(--beige); /* COLOR eee5d4 */
             transform: scale(1.2);
-            border-color: var(--navy-blue);
+            border-color: var(--navy-blue); /* COLOR 5d5741 */
         }
         
         /* Sección de descripción */
         .description-section {
             padding: 50px 15px;
-            background-color: var(--light-beige);
+            background-color: var(--light-beige); /* FONDO CLARO */
             width: 100%;
         }
         
@@ -359,24 +373,26 @@
         .description-title {
             font-size: 1.5rem;
             margin-bottom: 25px;
-            color: var(--navy-blue);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             line-height: 1.3;
             text-transform: uppercase;
             width: 100%;
+            font-weight: 700; /* Negrilla para títulos de sección */
         }
         
         .description-text {
             font-size: 1.1rem;
-            color: var(--light-navy);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             line-height: 1.6;
             margin-bottom: 30px;
             width: 100%;
+            opacity: 0.9;
         }
         
         /* Sección de mensaje */
         .message-section {
-            background-color: var(--navy-blue);
-            color: var(--white);
+            background-color: var(--navy-blue); /* COLOR 5d5741 */
+            color: var(--beige);                /* TEXTO eee5d4 */
             padding: 50px 15px;
             width: 100%;
             margin: 0;
@@ -393,12 +409,13 @@
             font-family: 'Avenir', 'Open Sans', sans-serif;
             width: 100%;
             margin: 0 auto;
+            color: var(--beige); /* COLOR eee5d4 */
         }
         
         /* Sección del Calendly */
         .calendly-section {
             padding: 50px 15px;
-            background-color: var(--white);
+            background-color: var(--beige); /* FONDO eee5d4 */
             width: 100%;
         }
         
@@ -408,7 +425,7 @@
         
         .calendly-container {
             width: 100%;
-            background-color: var(--white);
+            background-color: var(--beige); /* FONDO eee5d4 */
             border-radius: 8px;
             padding: 30px 15px;
         }
@@ -416,17 +433,17 @@
         .calendly-title {
             font-size: 1.8rem;
             margin-bottom: 20px;
-            color: var(--navy-blue);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             text-align: center;
             line-height: 1.2;
             text-transform: uppercase;
-            font-weight: 800;
+            font-weight: 700; /* Negrilla para títulos de sección */
             width: 100%;
         }
         
         .calendly-widget-container {
             width: 100%;
-            background-color: var(--white);
+            background-color: var(--beige); /* FONDO eee5d4 */
             border-radius: 8px;
             padding: 15px;
         }
@@ -434,22 +451,23 @@
         .calendly-note {
             text-align: center;
             font-style: italic;
-            color: var(--gray);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             margin-top: 20px;
             font-size: 0.9rem;
             width: 100%;
+            opacity: 0.8;
         }
         
         .calendly-note i {
-            color: var(--navy-blue);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             margin-right: 8px;
             font-size: 1rem;
         }
         
         /* NUEVA SECCIÓN DESPUÉS DE CALENDLY */
         .home-message-section {
-            background-color: var(--navy-blue);
-            color: var(--white);
+            background-color: var(--navy-blue); /* COLOR 5d5741 */
+            color: var(--beige);                /* TEXTO eee5d4 */
             padding: 60px 15px;
             width: 100%;
             margin: 0;
@@ -465,9 +483,10 @@
             line-height: 1.3;
             margin-bottom: 25px;
             font-family: 'ADA', 'Montserrat', sans-serif;
-            font-weight: 800;
+            font-weight: 700; /* Negrilla para títulos de sección */
             text-transform: uppercase;
             width: 100%;
+            color: var(--beige); /* COLOR eee5d4 */
         }
         
         .home-message-subtitle {
@@ -475,8 +494,9 @@
             line-height: 1.4;
             margin-bottom: 30px;
             font-family: 'ADA', 'Montserrat', sans-serif;
-            font-weight: 700;
+            font-weight: 700; /* Negrilla para títulos de sección */
             width: 100%;
+            color: var(--beige); /* COLOR eee5d4 */
         }
         
         .home-message-text {
@@ -485,12 +505,13 @@
             font-family: 'Avenir', 'Open Sans', sans-serif;
             margin-bottom: 20px;
             width: 100%;
+            color: var(--beige); /* COLOR eee5d4 */
         }
         
         /* Sección de logos de auspiciantes */
         .sponsors-section {
             padding: 60px 15px;
-            background-color: var(--white);
+            background-color: var(--beige); /* FONDO eee5d4 */
             width: 100%;
             border-top: 1px solid var(--light-gray);
             border-bottom: 1px solid var(--light-gray);
@@ -529,7 +550,7 @@
         /* Sección final */
         .final-section {
             padding: 50px 15px;
-            background-color: var(--light-beige);
+            background-color: var(--light-beige); /* FONDO CLARO */
             width: 100%;
         }
         
@@ -540,16 +561,17 @@
         .final-title {
             font-size: 1.5rem;
             margin-bottom: 30px;
-            color: var(--navy-blue);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             text-align: center;
             text-transform: uppercase;
             width: 100%;
+            font-weight: 700; /* Negrilla para títulos de sección */
         }
         
         .final-subtitle {
             font-size: 1.3rem;
             margin-bottom: 20px;
-            color: var(--navy-blue);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             font-weight: 600;
             text-align: center;
             width: 100%;
@@ -557,11 +579,12 @@
         
         .final-text {
             font-size: 1.1rem;
-            color: var(--light-navy);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             line-height: 1.6;
             margin-bottom: 25px;
             text-align: center;
             width: 100%;
+            opacity: 0.9;
         }
         
         .values-list {
@@ -577,12 +600,12 @@
             padding: 15px;
             background: rgba(255, 255, 255, 0.7);
             border-radius: 8px;
-            border-left: 4px solid var(--primary-brown);
+            border-left: 4px solid var(--primary-brown); /* COLOR 5c494d */
             width: 100%;
         }
         
         .value-icon {
-            color: var(--navy-blue);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             font-size: 1.3rem;
             margin-right: 15px;
             margin-top: 3px;
@@ -591,17 +614,18 @@
         
         .value-text {
             font-size: 1.1rem;
-            color: var(--light-navy);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             line-height: 1.5;
             flex: 1;
             width: 100%;
+            opacity: 0.9;
         }
         
         .final-cta {
             text-align: center;
             margin-top: 40px;
             padding: 25px 15px;
-            background: var(--white);
+            background: var(--beige); /* FONDO eee5d4 */
             border-radius: 10px;
             width: 100%;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
@@ -610,17 +634,19 @@
         .cta-title {
             font-size: 1.4rem;
             margin-bottom: 20px;
-            color: var(--navy-blue);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             text-transform: uppercase;
             width: 100%;
+            font-weight: 700; /* Negrilla para títulos de sección */
         }
         
         .cta-text {
             font-size: 1.1rem;
-            color: var(--light-navy);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             margin-bottom: 25px;
             line-height: 1.5;
             width: 100%;
+            opacity: 0.9;
         }
         
         .contact-info {
@@ -639,7 +665,7 @@
             text-align: center;
             padding: 20px;
             border-radius: 10px;
-            background: var(--white);
+            background: var(--beige); /* FONDO eee5d4 */
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             width: 100%;
@@ -649,25 +675,26 @@
         .contact-item:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-            border-color: var(--primary-brown);
+            border-color: var(--primary-brown); /* COLOR 5c494d */
         }
         
         .contact-icon {
             font-size: 2rem;
-            color: var(--navy-blue);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             margin-bottom: 15px;
         }
         
         .contact-text {
             font-size: 1rem;
-            color: var(--light-navy);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             margin-bottom: 10px;
             line-height: 1.4;
             width: 100%;
+            opacity: 0.9;
         }
         
         .contact-link {
-            color: var(--navy-blue);
+            color: var(--navy-blue); /* COLOR 5d5741 */
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -679,8 +706,8 @@
         /* Footer */
         footer {
             padding: 40px 15px;
-            background-color: var(--navy-blue);
-            color: var(--white);
+            background-color: var(--navy-blue); /* COLOR 5d5741 */
+            color: var(--beige);                /* TEXTO eee5d4 */
             text-align: center;
             width: 100%;
         }
@@ -704,6 +731,7 @@
             text-transform: uppercase;
             text-align: center;
             width: 100%;
+            color: var(--beige); /* COLOR eee5d4 */
         }
         
         .social-links {
@@ -719,8 +747,8 @@
             justify-content: center;
             width: 45px;
             height: 45px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--white);
+            background-color: rgba(238, 229, 212, 0.1); /* eee5d4 con transparencia */
+            color: var(--beige); /* COLOR eee5d4 */
             font-size: 1.3rem;
             transition: all 0.3s ease;
             border-radius: 50%;
@@ -728,14 +756,14 @@
         }
         
         .social-links a:hover {
-            background-color: var(--primary-brown);
-            color: var(--navy-blue);
+            background-color: var(--primary-brown); /* COLOR 5c494d */
+            color: var(--beige); /* COLOR eee5d4 */
         }
         
         .copyright {
             margin-top: 25px;
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(238, 229, 212, 0.8); /* eee5d4 con transparencia */
             width: 100%;
         }
         
@@ -746,7 +774,7 @@
         .ingett-credit {
             font-weight: 600;
             margin-top: 10px;
-            color: var(--primary-brown);
+            color: var(--primary-brown); /* COLOR 5c494d */
             font-size: 1rem;
         }
         
@@ -757,8 +785,8 @@
             right: 15px;
             width: 45px;
             height: 45px;
-            background-color: var(--primary-brown);
-            color: var(--navy-blue);
+            background-color: var(--primary-brown); /* COLOR 5c494d */
+            color: var(--beige); /* COLOR eee5d4 */
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -769,7 +797,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            border: 2px solid var(--white);
+            border: 2px solid var(--beige);
         }
         
         .scroll-top.visible {
@@ -778,8 +806,8 @@
         }
         
         .scroll-top:hover {
-            background-color: var(--navy-blue);
-            color: var(--white);
+            background-color: var(--navy-blue); /* COLOR 5d5741 */
+            color: var(--beige); /* COLOR eee5d4 */
             transform: scale(1.1);
         }
         
@@ -790,7 +818,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--navy-blue);
+            background-color: var(--navy-blue); /* COLOR 5d5741 */
             z-index: 9999;
             display: flex;
             flex-direction: column;
@@ -806,7 +834,7 @@
         }
         
         .loading-text {
-            color: var(--white);
+            color: var(--beige); /* COLOR eee5d4 */
             font-family: 'ADA', sans-serif;
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -1006,7 +1034,7 @@
         </div>
     </a>
     
-    <!-- Hero Section -->
+    <!-- Hero Section - EXACTAMENTE COMO EN EL CÓDIGO ORIGINAL -->
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
@@ -1017,8 +1045,8 @@
                 <div class="hero-subtitle">A B E D U L D E P A R T A M E N T O S</div>
                 
                 <div class="hero-title-container">
-                    <h1 class="hero-title">Un lugar que se sienta bien.</h1>
-                    <div class="hero-subtitle-text">Vivir cómodo junto a lo que más importa: tu familia.</div>
+                    <h1 class="hero-title"><strong>Un lugar</strong> que se sienta bien.</h1>
+                    <div class="hero-subtitle-text"><strong>Vivir cómodo</strong> junto a lo que más <strong>importa</strong>: tu familia.</div>
                     <div class="hero-description">Suites, departamentos de 2 y 3 dormitorios en excelente ubicación en Quito</div>
                     <div class="hero-button-container">
                         <a href="#agendar-cita" class="agendar-btn"><span>Agenda tu visita</span></a>
@@ -1059,8 +1087,8 @@
     <section class="description-section">
         <div class="container">
             <div class="description-content">
-                <h2 class="description-title">Hay muchas opciones de departamentos. Nosotros te ayudamos a saber si Abedul es el tuyo.</h2>
-                <p class="description-text">Abedul no es lujo ni promesas exageradas: es comodidad real, buenos acabados y una ubicación práctica para el día a día.</p>
+                <h2 class="description-title">Agenda tu reunión gratuita de 30 minutos</h2>
+                <p class="description-text">No vendemos sueños inalcanzables ni exageramos beneficios. Ofrecemos hogares reales para familias que buscan estabilidad y seguridad, con un acompañamiento claro y responsable.</p>
                 <div class="description-button">
                     <a href="#agendar-cita" class="agendar-btn"><span>Agenda tu reunión gratuita</span></a>
                 </div>
