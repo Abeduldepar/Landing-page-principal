@@ -212,8 +212,11 @@
         
         /* Header - Primera Sección */
         .hero-section {
-            background-color: var(--navy-blue); /* COLOR 5d5741 */
-            color: var(--beige);                /* TEXTO COLOR eee5d4 */
+            background-image: url('https://res.cloudinary.com/dtmqftcsr/image/upload/v1763752529/EXTERIOR_to759n.jpg'); /* NUEVA IMAGEN DE FONDO */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: var(--beige);
             padding: 25px 15px 20px 15px;
             text-align: center;
             width: 100%;
@@ -221,11 +224,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+        }
+        
+        /* Capa oscura sobre la imagen para mejorar legibilidad */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(93, 87, 65, 0.7); /* Color navy-blue con opacidad */
+            z-index: 1;
         }
         
         .hero-content {
             width: 100%;
             max-width: 100%;
+            position: relative;
+            z-index: 2;
         }
         
         .hero-logo-container {
@@ -247,7 +265,7 @@
             margin: 0 auto 15px;
             font-family: 'ADA', 'Montserrat', sans-serif;
             text-transform: uppercase;
-            color: var(--beige); /* COLOR eee5d4 */
+            color: var(--beige);
             width: 100%;
         }
         
@@ -259,7 +277,7 @@
         .hero-title {
             font-size: 1.8rem;
             line-height: 1.2;
-            color: var(--beige); /* COLOR eee5d4 */
+            color: var(--beige);
             margin-bottom: 10px;
             text-transform: uppercase;
             width: 100%;
@@ -268,7 +286,7 @@
         .hero-subtitle-text {
             font-size: 1.5rem;
             line-height: 1.2;
-            color: var(--beige); /* COLOR eee5d4 */
+            color: var(--beige);
             margin-bottom: 15px;
             font-family: 'ADA', 'Montserrat', sans-serif;
             text-transform: uppercase;
@@ -279,7 +297,7 @@
             font-size: 1rem;
             font-weight: 400;
             line-height: 1.5;
-            color: rgba(238, 229, 212, 0.9); /* COLOR eee5d4 con transparencia */
+            color: rgba(238, 229, 212, 0.95);
             font-family: 'Avenir', 'Open Sans', sans-serif;
             width: 100%;
             margin: 0 auto;
