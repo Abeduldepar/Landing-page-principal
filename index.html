@@ -640,6 +640,86 @@
             background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
         }
         
+        /* NUEVA SECCIÓN DE GALERÍA DE IMÁGENES */
+        .gallery-section {
+            padding: 50px 15px;
+            background-color: var(--light-beige); /* FONDO CLARO */
+            width: 100%;
+        }
+        
+        .gallery-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .gallery-title {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--navy-blue); /* COLOR 5d5741 */
+            text-transform: uppercase;
+            text-align: center;
+            width: 100%;
+            font-weight: 700; /* Negrilla para títulos de sección */
+        }
+        
+        .gallery-carousel-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 0 auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-carousel {
+            display: flex;
+            width: 900%;
+            height: 100%;
+            transition: transform 1s ease;
+        }
+        
+        .gallery-carousel-item {
+            width: 11.111%; /* 100% / 9 imágenes */
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 10;
+        }
+        
+        .gallery-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(238, 229, 212, 0.5); /* COLOR eee5d4 con transparencia */
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .gallery-indicator.active {
+            background-color: var(--beige); /* COLOR eee5d4 */
+            transform: scale(1.2);
+            border-color: var(--navy-blue); /* COLOR 5d5741 */
+        }
+        
         /* Sección de descripción */
         .description-section {
             padding: 50px 15px;
@@ -1177,7 +1257,7 @@
                 letter-spacing: 4px;
             }
             
-            .section-title, .description-title, .final-title, .mobility-title, .location-title {
+            .section-title, .description-title, .final-title, .mobility-title, .location-title, .gallery-title {
                 font-size: 1.8rem;
             }
             
@@ -1211,6 +1291,10 @@
             
             .carousel-container {
                 height: 350px;
+            }
+            
+            .gallery-carousel-container {
+                height: 400px;
             }
             
             .mobility-map {
@@ -1290,11 +1374,15 @@
                 font-size: 1.3rem;
             }
             
-            .section-title, .description-title, .final-title, .mobility-title, .location-title {
+            .section-title, .description-title, .final-title, .mobility-title, .location-title, .gallery-title {
                 font-size: 2rem;
             }
             
             .carousel-container {
+                height: 450px;
+            }
+            
+            .gallery-carousel-container {
                 height: 450px;
             }
             
@@ -1343,6 +1431,10 @@
             }
             
             .carousel-container {
+                height: 500px;
+            }
+            
+            .gallery-carousel-container {
                 height: 500px;
             }
             
@@ -1441,9 +1533,9 @@
             <h2 class="mobility-title">DESCUBRE NUESTROS ESPACIOS</h2>
             
             <div class="mobility-content">
-                <!-- Imagen del croquis -->
+                <!-- Imagen del croquis (ACTUALIZADA A MAYOR CALIDAD) -->
                 <div class="mobility-map-container">
-                    <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769654673/ca09b5f7-e223-42e8-9c35-61e4fa003d90.png" 
+                    <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656707/CROQUIS_ABEDUL_FIN_loxw7q.png" 
                          alt="Croquis de ubicación y conectividad" class="mobility-map">
                 </div>
                 
@@ -1528,6 +1620,45 @@
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- NUEVA SECCIÓN DE GALERÍA DE IMÁGENES -->
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <h2 class="gallery-title">Galería de Espacios</h2>
+            <div class="gallery-carousel-container">
+                <div class="gallery-carousel" id="galleryCarousel">
+                    <div class="gallery-carousel-item">
+                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656855/16_n6mbza.png" alt="Imagen 16">
+                    </div>
+                    <div class="gallery-carousel-item">
+                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656851/17_kivd8u.png" alt="Imagen 17">
+                    </div>
+                    <div class="gallery-carousel-item">
+                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656855/18_u53l3l.png" alt="Imagen 18">
+                    </div>
+                    <div class="gallery-carousel-item">
+                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656855/19_boyk2r.png" alt="Imagen 19">
+                    </div>
+                    <div class="gallery-carousel-item">
+                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656850/20_a00dye.png" alt="Imagen 20">
+                    </div>
+                    <div class="gallery-carousel-item">
+                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656851/21_euggqi.png" alt="Imagen 21">
+                    </div>
+                    <div class="gallery-carousel-item">
+                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656851/22_kh1nts.png" alt="Imagen 22">
+                    </div>
+                    <div class="gallery-carousel-item">
+                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656852/23_ul7dyq.png" alt="Imagen 23">
+                    </div>
+                    <div class="gallery-carousel-item">
+                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656853/24_rtoncr.png" alt="Imagen 24">
+                    </div>
+                </div>
+                <div class="gallery-indicators" id="gallery-indicators"></div>
             </div>
         </div>
     </section>
@@ -1686,13 +1817,19 @@
             }, 1000);
         });
         
-        // Variables globales para el carrusel
+        // Variables globales para el carrusel principal
         let currentSlide = 0;
         const totalSlides = 5;
         const carousel = document.querySelector('.carousel');
         let carouselInterval;
         
-        // Carrusel automático
+        // Variables globales para el carrusel de galería
+        let currentGallerySlide = 0;
+        const totalGallerySlides = 9;
+        const galleryCarousel = document.getElementById('galleryCarousel');
+        let galleryInterval;
+        
+        // Carrusel automático principal
         function startCarousel() {
             carouselInterval = setInterval(() => {
                 nextSlide();
@@ -1705,7 +1842,20 @@
             updateIndicators();
         }
         
-        // Crear indicadores del carrusel
+        // Carrusel automático de galería
+        function startGalleryCarousel() {
+            galleryInterval = setInterval(() => {
+                nextGallerySlide();
+            }, 3000);
+        }
+        
+        function nextGallerySlide() {
+            currentGallerySlide = (currentGallerySlide + 1) % totalGallerySlides;
+            galleryCarousel.style.transform = `translateX(-${currentGallerySlide * (100 / totalGallerySlides)}%)`;
+            updateGalleryIndicators();
+        }
+        
+        // Crear indicadores del carrusel principal
         function createIndicators() {
             const indicatorsContainer = document.getElementById('carousel-indicators');
             
@@ -1727,11 +1877,45 @@
             }
         }
         
-        // Actualizar indicadores activos
+        // Crear indicadores del carrusel de galería
+        function createGalleryIndicators() {
+            const indicatorsContainer = document.getElementById('gallery-indicators');
+            
+            for (let i = 0; i < totalGallerySlides; i++) {
+                const indicator = document.createElement('div');
+                indicator.classList.add('gallery-indicator');
+                if (i === 0) indicator.classList.add('active');
+                
+                indicator.addEventListener('click', () => {
+                    currentGallerySlide = i;
+                    galleryCarousel.style.transform = `translateX(-${currentGallerySlide * (100 / totalGallerySlides)}%)`;
+                    updateGalleryIndicators();
+                    // Reiniciar el intervalo
+                    clearInterval(galleryInterval);
+                    startGalleryCarousel();
+                });
+                
+                indicatorsContainer.appendChild(indicator);
+            }
+        }
+        
+        // Actualizar indicadores activos del carrusel principal
         function updateIndicators() {
             const indicators = document.querySelectorAll('.indicator');
             indicators.forEach((indicator, index) => {
                 if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        // Actualizar indicadores activos del carrusel de galería
+        function updateGalleryIndicators() {
+            const indicators = document.querySelectorAll('.gallery-indicator');
+            indicators.forEach((indicator, index) => {
+                if (index === currentGallerySlide) {
                     indicator.classList.add('active');
                 } else {
                     indicator.classList.remove('active');
@@ -1761,6 +1945,8 @@
         function init() {
             createIndicators();
             startCarousel();
+            createGalleryIndicators();
+            startGalleryCarousel();
         }
         
         // Ejecutar inicialización al cargar la página
