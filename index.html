@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Fuentes según el manual de identidad -->
     <link href="https://fonts.cdnfonts.com/css/ada" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/avenir" rel="stylesheet">
+    <link href="https://fonts.cdnfonts/css/avenir" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -419,13 +419,17 @@
             overflow: hidden;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--beige);
         }
         
         .mobility-map {
             width: 100%;
-            height: 100%;
-            min-height: 400px;
-            object-fit: cover;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain; /* Cambiado de cover a contain para ver imagen completa */
             display: block;
         }
         
@@ -603,44 +607,7 @@
             min-width: 80px;
         }
         
-        .location-cta {
-            text-align: center;
-            margin-top: 30px;
-            width: 100%;
-        }
-        
-        .cotizar-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
-            color: var(--white); /* LETRAS BLANCAS */
-            padding: 16px 35px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-family: 'ADA', 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(92, 73, 77, 0.3);
-            border: 2px solid transparent;
-            width: 100%;
-            max-width: 300px;
-        }
-        
-        .cotizar-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(93, 87, 65, 0.4);
-            color: var(--white);
-            border-color: var(--beige);
-            background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
-        }
-        
-        /* NUEVA SECCIÓN DE GALERÍA DE IMÁGENES */
+        /* NUEVA SECCIÓN DE GALERÍA DE IMÁGENES - COMPLETAMENTE REHECHA */
         .gallery-section {
             padding: 50px 15px;
             background-color: var(--light-beige); /* FONDO CLARO */
@@ -663,61 +630,130 @@
             font-weight: 700; /* Negrilla para títulos de sección */
         }
         
-        .gallery-carousel-container {
+        .gallery-wrapper {
             position: relative;
             width: 100%;
-            height: 300px;
+            margin: 0 auto 40px;
             overflow: hidden;
             border-radius: 10px;
-            margin: 0 auto;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: var(--beige);
+        }
+        
+        .gallery-carousel-container {
+            width: 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
         }
         
         .gallery-carousel {
             display: flex;
-            width: 900%;
+            width: 100%;
             height: 100%;
-            transition: transform 1s ease;
+            transition: transform 0.5s ease;
         }
         
         .gallery-carousel-item {
-            width: 11.111%; /* 100% / 9 imágenes */
+            width: 100%;
             height: 100%;
+            flex-shrink: 0;
             position: relative;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
         }
         
         .gallery-carousel-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            border-radius: 5px;
+            display: block;
         }
         
-        .gallery-indicators {
+        .gallery-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: absolute;
-            bottom: 15px;
+            top: 50%;
             left: 0;
             right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
+            transform: translateY(-50%);
+            padding: 0 15px;
             z-index: 10;
         }
         
-        .gallery-indicator {
-            width: 10px;
-            height: 10px;
+        .gallery-nav-btn {
+            background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
+            color: var(--white);
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background-color: rgba(238, 229, 212, 0.5); /* COLOR eee5d4 con transparencia */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--beige);
+            box-shadow: 0 4px 12px rgba(92, 73, 77, 0.3);
+        }
+        
+        .gallery-nav-btn:hover {
+            background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(93, 87, 65, 0.4);
+        }
+        
+        .gallery-nav-btn.prev {
+            left: 15px;
+        }
+        
+        .gallery-nav-btn.next {
+            right: 15px;
+        }
+        
+        .gallery-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+            width: 100%;
+        }
+        
+        .gallery-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(93, 87, 65, 0.3); /* COLOR 5d5741 con transparencia */
             cursor: pointer;
             transition: all 0.3s ease;
             border: 1px solid transparent;
         }
         
         .gallery-indicator.active {
-            background-color: var(--beige); /* COLOR eee5d4 */
+            background-color: var(--primary-brown); /* COLOR 5c494d */
             transform: scale(1.2);
             border-color: var(--navy-blue); /* COLOR 5d5741 */
+        }
+        
+        .gallery-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .gallery-counter {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--navy-blue);
+            font-weight: 600;
+            font-size: 1.1rem;
         }
         
         /* Sección de descripción */
@@ -1293,12 +1329,19 @@
                 height: 350px;
             }
             
+            /* GALERÍA PARA TABLET */
             .gallery-carousel-container {
-                height: 400px;
+                height: 450px;
+            }
+            
+            .gallery-nav-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
             }
             
             .mobility-map {
-                min-height: 450px;
+                max-height: 550px;
             }
             
             .sponsor-logo {
@@ -1336,7 +1379,7 @@
                 font-size: 1.5rem;
             }
             
-            .agendar-btn, .cotizar-btn {
+            .agendar-btn {
                 width: auto;
                 max-width: 350px;
             }
@@ -1382,12 +1425,19 @@
                 height: 450px;
             }
             
+            /* GALERÍA PARA ESCRITORIO */
             .gallery-carousel-container {
-                height: 450px;
+                height: 500px;
+            }
+            
+            .gallery-nav-btn {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
             }
             
             .mobility-map {
-                min-height: 500px;
+                max-height: 600px;
             }
             
             .sponsor-logo {
@@ -1434,12 +1484,19 @@
                 height: 500px;
             }
             
+            /* GALERÍA PARA PANTALLAS GRANDES */
             .gallery-carousel-container {
-                height: 500px;
+                height: 550px;
+            }
+            
+            .gallery-nav-btn {
+                width: 80px;
+                height: 80px;
+                font-size: 2.2rem;
             }
             
             .mobility-map {
-                min-height: 550px;
+                max-height: 650px;
             }
             
             .sponsor-logo {
@@ -1579,7 +1636,7 @@
                     </p>
                 </div>
                 
-                <!-- Servicios a la derecha -->
+                <!-- Servicios a la derecha (SIN BOTÓN COTIZAR AQUÍ) -->
                 <div class="location-services">
                     <h3 class="services-title">Servicios:</h3>
                     
@@ -1613,52 +1670,43 @@
                             <span class="service-time">5 min</span>
                         </div>
                     </div>
-                    
-                    <div class="location-cta">
-                        <a href="#agendar-cita" class="cotizar-btn">
-                            <span>Cotizar aquí</span>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- NUEVA SECCIÓN DE GALERÍA DE IMÁGENES -->
+    <!-- NUEVA SECCIÓN DE GALERÍA DE IMÁGENES - COMPLETAMENTE REHECHA -->
     <section class="gallery-section">
         <div class="gallery-container">
             <h2 class="gallery-title">Galería de Espacios</h2>
-            <div class="gallery-carousel-container">
-                <div class="gallery-carousel" id="galleryCarousel">
-                    <div class="gallery-carousel-item">
-                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656855/16_n6mbza.png" alt="Imagen 16">
+            
+            <div class="gallery-wrapper">
+                <div class="gallery-carousel-container">
+                    <div class="gallery-carousel" id="galleryCarousel">
+                        <!-- Las imágenes se agregarán dinámicamente con JavaScript -->
                     </div>
-                    <div class="gallery-carousel-item">
-                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656851/17_kivd8u.png" alt="Imagen 17">
-                    </div>
-                    <div class="gallery-carousel-item">
-                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656855/18_u53l3l.png" alt="Imagen 18">
-                    </div>
-                    <div class="gallery-carousel-item">
-                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656855/19_boyk2r.png" alt="Imagen 19">
-                    </div>
-                    <div class="gallery-carousel-item">
-                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656850/20_a00dye.png" alt="Imagen 20">
-                    </div>
-                    <div class="gallery-carousel-item">
-                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656851/21_euggqi.png" alt="Imagen 21">
-                    </div>
-                    <div class="gallery-carousel-item">
-                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656851/22_kh1nts.png" alt="Imagen 22">
-                    </div>
-                    <div class="gallery-carousel-item">
-                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656852/23_ul7dyq.png" alt="Imagen 23">
-                    </div>
-                    <div class="gallery-carousel-item">
-                        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656853/24_rtoncr.png" alt="Imagen 24">
+                    
+                    <!-- Botones de navegación flotantes -->
+                    <div class="gallery-navigation">
+                        <button class="gallery-nav-btn prev" id="prevBtn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="gallery-nav-btn next" id="nextBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
                 </div>
-                <div class="gallery-indicators" id="gallery-indicators"></div>
+            </div>
+            
+            <!-- Indicadores y contador -->
+            <div class="gallery-indicators" id="gallery-indicators"></div>
+            <div class="gallery-counter" id="galleryCounter">1 / 9</div>
+            
+            <!-- Botón Cotizar aquí en la galería -->
+            <div class="gallery-cta">
+                <a href="#agendar-cita" class="agendar-btn">
+                    <span>Cotizar aquí</span>
+                </a>
             </div>
         </div>
     </section>
@@ -1817,17 +1865,27 @@
             }, 1000);
         });
         
-        // Variables globales para el carrusel principal
+        // Variables globales para el carrusel principal (automático)
         let currentSlide = 0;
         const totalSlides = 5;
         const carousel = document.querySelector('.carousel');
         let carouselInterval;
         
-        // Variables globales para el carrusel de galería
+        // Variables globales para el carrusel de galería (MANUAL)
         let currentGallerySlide = 0;
-        const totalGallerySlides = 9;
+        const galleryImages = [
+            'https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656855/16_n6mbza.png',
+            'https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656851/17_kivd8u.png',
+            'https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656855/18_u53l3l.png',
+            'https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656855/19_boyk2r.png',
+            'https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656850/20_a00dye.png',
+            'https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656851/21_euggqi.png',
+            'https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656851/22_kh1nts.png',
+            'https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656852/23_ul7dyq.png',
+            'https://res.cloudinary.com/dtmqftcsr/image/upload/v1769656853/24_rtoncr.png'
+        ];
+        const totalGallerySlides = galleryImages.length;
         const galleryCarousel = document.getElementById('galleryCarousel');
-        let galleryInterval;
         
         // Carrusel automático principal
         function startCarousel() {
@@ -1842,17 +1900,56 @@
             updateIndicators();
         }
         
-        // Carrusel automático de galería
-        function startGalleryCarousel() {
-            galleryInterval = setInterval(() => {
-                nextGallerySlide();
-            }, 3000);
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            carousel.style.transform = `translateX(-${currentSlide * 20}%)`;
+            updateIndicators();
         }
         
+        // Carrusel de galería MANUAL
         function nextGallerySlide() {
             currentGallerySlide = (currentGallerySlide + 1) % totalGallerySlides;
-            galleryCarousel.style.transform = `translateX(-${currentGallerySlide * (100 / totalGallerySlides)}%)`;
+            updateGallery();
+        }
+        
+        function prevGallerySlide() {
+            currentGallerySlide = (currentGallerySlide - 1 + totalGallerySlides) % totalGallerySlides;
+            updateGallery();
+        }
+        
+        function goToGallerySlide(index) {
+            currentGallerySlide = index;
+            updateGallery();
+        }
+        
+        function updateGallery() {
+            // Mover el carrusel
+            galleryCarousel.style.transform = `translateX(-${currentGallerySlide * 100}%)`;
+            
+            // Actualizar indicadores
             updateGalleryIndicators();
+            
+            // Actualizar contador
+            updateGalleryCounter();
+        }
+        
+        function createGalleryHTML() {
+            // Limpiar el carrusel
+            galleryCarousel.innerHTML = '';
+            
+            // Crear elementos de imagen
+            galleryImages.forEach((imageUrl, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-carousel-item';
+                
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                img.alt = `Imagen ${index + 16}`;
+                img.loading = 'lazy';
+                
+                item.appendChild(img);
+                galleryCarousel.appendChild(item);
+            });
         }
         
         // Crear indicadores del carrusel principal
@@ -1880,6 +1977,7 @@
         // Crear indicadores del carrusel de galería
         function createGalleryIndicators() {
             const indicatorsContainer = document.getElementById('gallery-indicators');
+            indicatorsContainer.innerHTML = '';
             
             for (let i = 0; i < totalGallerySlides; i++) {
                 const indicator = document.createElement('div');
@@ -1887,12 +1985,7 @@
                 if (i === 0) indicator.classList.add('active');
                 
                 indicator.addEventListener('click', () => {
-                    currentGallerySlide = i;
-                    galleryCarousel.style.transform = `translateX(-${currentGallerySlide * (100 / totalGallerySlides)}%)`;
-                    updateGalleryIndicators();
-                    // Reiniciar el intervalo
-                    clearInterval(galleryInterval);
-                    startGalleryCarousel();
+                    goToGallerySlide(i);
                 });
                 
                 indicatorsContainer.appendChild(indicator);
@@ -1923,6 +2016,16 @@
             });
         }
         
+        // Actualizar contador de galería
+        function updateGalleryCounter() {
+            const counter = document.getElementById('galleryCounter');
+            counter.textContent = `${currentGallerySlide + 1} / ${totalGallerySlides}`;
+        }
+        
+        // Botones de navegación para la galería
+        document.getElementById('prevBtn').addEventListener('click', prevGallerySlide);
+        document.getElementById('nextBtn').addEventListener('click', nextGallerySlide);
+        
         // Botón de scroll to top
         const scrollTopButton = document.getElementById('scrollTop');
         
@@ -1945,8 +2048,11 @@
         function init() {
             createIndicators();
             startCarousel();
+            
+            // Inicializar galería
+            createGalleryHTML();
             createGalleryIndicators();
-            startGalleryCarousel();
+            updateGalleryCounter();
         }
         
         // Ejecutar inicialización al cargar la página
