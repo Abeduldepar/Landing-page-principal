@@ -376,6 +376,270 @@
             border-color: var(--navy-blue); /* COLOR 5d5741 */
         }
         
+        /* NUEVA SECCIÓN DE MOVILIDAD Y CONECTIVIDAD */
+        .mobility-section {
+            padding: 50px 15px;
+            background-color: var(--light-beige); /* FONDO CLARO */
+            width: 100%;
+        }
+        
+        .mobility-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .mobility-title {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            color: var(--navy-blue); /* COLOR 5d5741 */
+            text-transform: uppercase;
+            text-align: center;
+            width: 100%;
+            font-weight: 700; /* Negrilla para títulos de sección */
+        }
+        
+        .mobility-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+        }
+        
+        @media (min-width: 992px) {
+            .mobility-content {
+                flex-direction: row;
+                align-items: stretch;
+            }
+        }
+        
+        .mobility-map-container {
+            flex: 1;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mobility-map {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .mobility-info {
+            flex: 0 0 350px;
+            background-color: var(--navy-blue); /* COLOR 5d5741 */
+            color: var(--beige); /* TEXTO eee5d4 */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mobility-info-title {
+            font-size: 1.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-family: 'ADA', 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--beige); /* COLOR eee5d4 */
+        }
+        
+        .mobility-info-text {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            color: var(--beige); /* COLOR eee5d4 */
+            opacity: 0.95;
+        }
+        
+        .mobility-info-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--beige); /* COLOR eee5d4 */
+        }
+        
+        .google-maps-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
+            color: var(--white); /* LETRAS BLANCAS */
+            padding: 14px 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-family: 'ADA', 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(92, 73, 77, 0.3);
+            width: 100%;
+            text-align: center;
+            border: 2px solid transparent;
+        }
+        
+        .google-maps-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(93, 87, 65, 0.4);
+            color: var(--white);
+            border-color: var(--beige);
+            background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
+        }
+        
+        /* NUEVA SECCIÓN DE UBICACIÓN ESTRATÉGICA */
+        .location-section {
+            padding: 50px 15px;
+            background-color: var(--beige); /* FONDO eee5d4 */
+            width: 100%;
+        }
+        
+        .location-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .location-title {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            color: var(--navy-blue); /* COLOR 5d5741 */
+            text-transform: uppercase;
+            text-align: center;
+            width: 100%;
+            font-weight: 700; /* Negrilla para títulos de sección */
+        }
+        
+        .location-content {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: 100%;
+        }
+        
+        @media (min-width: 992px) {
+            .location-content {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+        
+        .location-description {
+            flex: 1;
+            width: 100%;
+        }
+        
+        .location-description-text {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: var(--navy-blue); /* COLOR 5d5741 */
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .location-description-text strong {
+            font-weight: 700;
+        }
+        
+        .location-services {
+            flex: 1;
+            width: 100%;
+            background-color: var(--light-beige); /* FONDO CLARO */
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .services-title {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--navy-blue); /* COLOR 5d5741 */
+            font-weight: 700;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .services-list {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(93, 87, 65, 0.2); /* COLOR 5d5741 con opacidad */
+            width: 100%;
+        }
+        
+        .service-item:last-child {
+            border-bottom: none;
+        }
+        
+        .service-name {
+            font-size: 1.1rem;
+            color: var(--navy-blue); /* COLOR 5d5741 */
+            font-weight: 500;
+            flex: 1;
+        }
+        
+        .service-time {
+            font-size: 1.1rem;
+            color: var(--navy-blue); /* COLOR 5d5741 */
+            font-weight: 700;
+            margin-left: 20px;
+            text-align: right;
+            min-width: 80px;
+        }
+        
+        .location-cta {
+            text-align: center;
+            margin-top: 30px;
+            width: 100%;
+        }
+        
+        .cotizar-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-brown), var(--dark-brown));
+            color: var(--white); /* LETRAS BLANCAS */
+            padding: 16px 35px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-family: 'ADA', 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(92, 73, 77, 0.3);
+            border: 2px solid transparent;
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .cotizar-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(93, 87, 65, 0.4);
+            color: var(--white);
+            border-color: var(--beige);
+            background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
+        }
+        
         /* Sección de descripción */
         .description-section {
             padding: 50px 15px;
@@ -913,16 +1177,24 @@
                 letter-spacing: 4px;
             }
             
-            .section-title, .description-title, .final-title {
+            .section-title, .description-title, .final-title, .mobility-title, .location-title {
                 font-size: 1.8rem;
             }
             
-            .description-text, .final-text, .value-text, .cta-text {
+            .description-text, .final-text, .value-text, .cta-text, .location-description-text, .service-name, .service-time {
                 font-size: 1.2rem;
             }
             
-            .message-text, .home-message-text {
+            .message-text, .home-message-text, .mobility-info-text {
                 font-size: 1.3rem;
+            }
+            
+            .mobility-info-title {
+                font-size: 1.8rem;
+            }
+            
+            .services-title {
+                font-size: 1.5rem;
             }
             
             .calendly-title {
@@ -939,6 +1211,10 @@
             
             .carousel-container {
                 height: 350px;
+            }
+            
+            .mobility-map {
+                min-height: 450px;
             }
             
             .sponsor-logo {
@@ -976,7 +1252,7 @@
                 font-size: 1.5rem;
             }
             
-            .agendar-btn {
+            .agendar-btn, .cotizar-btn {
                 width: auto;
                 max-width: 350px;
             }
@@ -1014,12 +1290,16 @@
                 font-size: 1.3rem;
             }
             
-            .section-title, .description-title, .final-title {
+            .section-title, .description-title, .final-title, .mobility-title, .location-title {
                 font-size: 2rem;
             }
             
             .carousel-container {
                 height: 450px;
+            }
+            
+            .mobility-map {
+                min-height: 500px;
             }
             
             .sponsor-logo {
@@ -1064,6 +1344,10 @@
             
             .carousel-container {
                 height: 500px;
+            }
+            
+            .mobility-map {
+                min-height: 550px;
             }
             
             .sponsor-logo {
@@ -1147,6 +1431,103 @@
                     </div>
                 </div>
                 <div class="carousel-indicators" id="carousel-indicators"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- NUEVA SECCIÓN DE MOVILIDAD Y CONECTIVIDAD -->
+    <section class="mobility-section">
+        <div class="mobility-container">
+            <h2 class="mobility-title">DESCUBRE NUESTROS ESPACIOS</h2>
+            
+            <div class="mobility-content">
+                <!-- Imagen del croquis -->
+                <div class="mobility-map-container">
+                    <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1769654673/ca09b5f7-e223-42e8-9c35-61e4fa003d90.png" 
+                         alt="Croquis de ubicación y conectividad" class="mobility-map">
+                </div>
+                
+                <!-- Información a la derecha -->
+                <div class="mobility-info">
+                    <h3 class="mobility-info-title">
+                        Tu nuevo hogar con<br>
+                        movilidad y conectividad<br>
+                        privilegiada.
+                    </h3>
+                    
+                    <p class="mobility-info-text">
+                        Conectado con vías principales de acceso, facilitando la movilidad de los residentes.
+                    </p>
+                    
+                    <p class="mobility-info-subtitle">Visítanos en nuestra sala de ventas:</p>
+                    
+                    <a href="https://maps.app.goo.gl/3uTnmbSNhSGmXbdi7" 
+                       target="_blank" 
+                       class="google-maps-btn">
+                        <span>Ir a Google Maps</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- NUEVA SECCIÓN DE UBICACIÓN ESTRATÉGICA -->
+    <section class="location-section">
+        <div class="location-container">
+            <h2 class="location-title">Ubicación estratégica</h2>
+            
+            <div class="location-content">
+                <!-- Descripción a la izquierda -->
+                <div class="location-description">
+                    <p class="location-description-text">
+                        <strong>Abedul está ubicado en el centro de Quito en una zona desarrollada y dinámica.</strong>
+                    </p>
+                    <p class="location-description-text">
+                        Nuestra ubicación privilegiada te permite acceder rápidamente a los principales servicios, centros comerciales, áreas verdes y centros médicos de la ciudad, garantizando una excelente calidad de vida para ti y tu familia.
+                    </p>
+                </div>
+                
+                <!-- Servicios a la derecha -->
+                <div class="location-services">
+                    <h3 class="services-title">Servicios:</h3>
+                    
+                    <div class="services-list">
+                        <div class="service-item">
+                            <span class="service-name">Parque La Carolina</span>
+                            <span class="service-time">23 min</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-name">Quicentro Shopping</span>
+                            <span class="service-time">21 min</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-name">Portal Shopping</span>
+                            <span class="service-time">19 min</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-name">Parque Bicentenario</span>
+                            <span class="service-time">19 min</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-name">Colegio Británico</span>
+                            <span class="service-time">11 min</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-name">Hospital Solca</span>
+                            <span class="service-time">9 min</span>
+                        </div>
+                        <div class="service-item">
+                            <span class="service-name">Supermaxi</span>
+                            <span class="service-time">5 min</span>
+                        </div>
+                    </div>
+                    
+                    <div class="location-cta">
+                        <a href="#agendar-cita" class="cotizar-btn">
+                            <span>Cotizar aquí</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
