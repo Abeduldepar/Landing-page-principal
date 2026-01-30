@@ -210,7 +210,7 @@
             color: var(--white);
         }
         
-        /* Header - Primera Sección */
+        /* Header - Primera Sección - CON LOGO RESTAURADO */
         .hero-section {
             background-image: url('https://res.cloudinary.com/dtmqftcsr/image/upload/v1763752529/EXTERIOR_to759n.jpg'); /* NUEVA IMAGEN DE FONDO */
             background-size: cover;
@@ -607,7 +607,7 @@
             min-width: 80px;
         }
         
-        /* NUEVA SECCIÓN DE GALERÍA DE IMÁGENES - COMPLETAMENTE REHECHA */
+        /* NUEVA SECCIÓN DE GALERÍA DE IMÁGENES - ARREGLADA */
         .gallery-section {
             padding: 50px 15px;
             background-color: var(--light-beige); /* FONDO CLARO */
@@ -634,10 +634,10 @@
             position: relative;
             width: 100%;
             margin: 0 auto 40px;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            background-color: var(--beige);
+            overflow: visible; /* Cambiado para que los botones no se corten */
+            border-radius: 0;
+            box-shadow: none;
+            background-color: transparent;
         }
         
         .gallery-carousel-container {
@@ -648,6 +648,7 @@
             justify-content: center;
             overflow: hidden;
             position: relative;
+            border-radius: 8px; /* Borde solo en el contenedor de imagen */
         }
         
         .gallery-carousel {
@@ -665,27 +666,28 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 0;
         }
         
         .gallery-carousel-item img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            border-radius: 5px;
+            object-fit: contain; /* CONTAIN en lugar de COVER para mostrar imagen completa */
+            border-radius: 8px;
             display: block;
+            background-color: var(--beige); /* Fondo para las áreas vacías */
         }
         
+        /* BOTONES DE NAVEGACIÓN EN LA PARTE INFERIOR */
         .gallery-navigation {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            gap: 20px;
             position: absolute;
-            top: 50%;
+            bottom: 20px;
             left: 0;
             right: 0;
-            transform: translateY(-50%);
-            padding: 0 15px;
             z-index: 10;
         }
         
@@ -698,25 +700,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: all 0.3s ease;
             border: 2px solid var(--beige);
-            box-shadow: 0 4px 12px rgba(92, 73, 77, 0.3);
+            box-shadow: 0 4px 12px rgba(92, 73, 77, 0.5);
+            position: relative;
+            z-index: 20;
         }
         
         .gallery-nav-btn:hover {
             background: linear-gradient(135deg, var(--navy-blue), var(--light-navy));
-            transform: scale(1.1);
+            transform: scale(1.15);
             box-shadow: 0 6px 15px rgba(93, 87, 65, 0.4);
-        }
-        
-        .gallery-nav-btn.prev {
-            left: 15px;
-        }
-        
-        .gallery-nav-btn.next {
-            right: 15px;
         }
         
         .gallery-indicators {
@@ -756,42 +752,11 @@
             font-size: 1.1rem;
         }
         
-        /* Sección de descripción */
-        .description-section {
-            padding: 50px 15px;
-            background-color: var(--light-beige); /* FONDO CLARO */
-            width: 100%;
-        }
-        
-        .description-content {
-            width: 100%;
-            text-align: center;
-        }
-        
-        .description-title {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            color: var(--navy-blue); /* COLOR 5d5741 */
-            line-height: 1.3;
-            text-transform: uppercase;
-            width: 100%;
-            font-weight: 700; /* Negrilla para títulos de sección */
-        }
-        
-        .description-text {
-            font-size: 1.1rem;
-            color: var(--navy-blue); /* COLOR 5d5741 */
-            line-height: 1.6;
-            margin-bottom: 30px;
-            width: 100%;
-            opacity: 0.9;
-        }
-        
-        /* Sección de mensaje - NUEVA VERSIÓN CON LETRAS GRANDES TIPO TÍTULO */
+        /* Sección de mensaje - TEXTO MÁS PEQUEÑO */
         .message-section {
             background-color: var(--navy-blue); /* COLOR 5d5741 */
             color: var(--beige);                /* TEXTO eee5d4 */
-            padding: 80px 15px;
+            padding: 60px 15px;
             width: 100%;
             margin: 0;
             text-align: center;
@@ -804,25 +769,24 @@
         }
         
         .message-title {
-            font-size: 2.2rem;
-            line-height: 1.3;
+            font-size: 1.5rem;
+            line-height: 1.4;
             font-family: 'ADA', 'Montserrat', sans-serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 40px;
+            font-weight: 600;
+            margin-bottom: 30px;
             width: 100%;
             color: var(--beige); /* COLOR eee5d4 */
         }
         
         @media (min-width: 768px) {
             .message-title {
-                font-size: 2.8rem;
+                font-size: 1.8rem;
             }
         }
         
         @media (min-width: 992px) {
             .message-title {
-                font-size: 3.2rem;
+                font-size: 2rem;
             }
         }
         
@@ -1247,36 +1211,6 @@
             transform: scale(1.1);
         }
         
-        /* Efecto de carga inicial */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--navy-blue); /* COLOR 5d5741 */
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
-        }
-        
-        .loading-logo {
-            width: 100px;
-            filter: brightness(0) invert(1);
-            margin-bottom: 20px;
-        }
-        
-        .loading-text {
-            color: var(--beige); /* COLOR eee5d4 */
-            font-family: 'ADA', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 1.3rem;
-        }
-        
         /* MEDIA QUERIES PARA DISPOSITIVOS MÁS GRANDES */
         @media (min-width: 768px) {
             body, html {
@@ -1351,9 +1285,14 @@
             }
             
             .gallery-nav-btn {
-                width: 60px;
-                height: 60px;
-                font-size: 1.8rem;
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+            
+            .gallery-navigation {
+                bottom: 25px;
+                gap: 30px;
             }
             
             .mobility-map {
@@ -1447,9 +1386,14 @@
             }
             
             .gallery-nav-btn {
-                width: 70px;
-                height: 70px;
-                font-size: 2rem;
+                width: 55px;
+                height: 55px;
+                font-size: 1.5rem;
+            }
+            
+            .gallery-navigation {
+                bottom: 30px;
+                gap: 40px;
             }
             
             .mobility-map {
@@ -1506,9 +1450,14 @@
             }
             
             .gallery-nav-btn {
-                width: 80px;
-                height: 80px;
-                font-size: 2.2rem;
+                width: 60px;
+                height: 60px;
+                font-size: 1.6rem;
+            }
+            
+            .gallery-navigation {
+                bottom: 35px;
+                gap: 50px;
             }
             
             .mobility-map {
@@ -1538,20 +1487,14 @@
     </style>
 </head>
 <body>
-    <!-- Pantalla de carga inicial -->
-    <div class="loading-overlay" id="loadingOverlay">
-        <img src="https://res.cloudinary.com/dtmqftcsr/image/upload/v1766691282/1_gyq7ux.png" alt="Logo Abedul" class="loading-logo">
-        <div class="loading-text">Abedul Apartamentos</div>
-    </div>
-    
     <!-- Botón flotante para agendar cita - SOLO ICONO DE CALENDARIO -->
-    <a href="#agendar-cita" class="floating-button" id="floatingButton" title="Agendar cita">
+    <a href="https://calendly.com/abeduldepartamentos/30min" class="floating-button" id="floatingButton" title="Agendar cita" target="_blank">
         <div class="calendar-icon">
             <i class="fas fa-calendar-alt"></i>
         </div>
     </a>
     
-    <!-- Hero Section -->
+    <!-- Hero Section - CON LOGO RESTAURADO -->
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
@@ -1566,7 +1509,7 @@
                     <div class="hero-subtitle-text"><strong>Vivir cómodo</strong> junto a lo que más <strong>importa</strong>: tu familia.</div>
                     <div class="hero-description">Suites, departamentos de 2 y 3 dormitorios en excelente ubicación en Quito</div>
                     <div class="hero-button-container">
-                        <a href="#agendar-cita" class="agendar-btn"><span>Agenda tu llamada</span></a>
+                        <a href="https://calendly.com/abeduldepartamentos/30min" class="agendar-btn" target="_blank"><span>Agenda tu llamada</span></a>
                     </div>
                 </div>
             </div>
@@ -1691,7 +1634,7 @@
         </div>
     </section>
     
-    <!-- NUEVA SECCIÓN DE GALERÍA DE IMÁGENES - COMPLETAMENTE REHECHA -->
+    <!-- NUEVA SECCIÓN DE GALERÍA DE IMÁGENES - ARREGLADA -->
     <section class="gallery-section">
         <div class="gallery-container">
             <h2 class="gallery-title">Galería de Espacios</h2>
@@ -1702,7 +1645,7 @@
                         <!-- Las imágenes se agregarán dinámicamente con JavaScript -->
                     </div>
                     
-                    <!-- Botones de navegación flotantes -->
+                    <!-- Botones de navegación en la parte inferior DENTRO del contenedor -->
                     <div class="gallery-navigation">
                         <button class="gallery-nav-btn prev" id="prevBtn">
                             <i class="fas fa-chevron-left"></i>
@@ -1720,27 +1663,19 @@
             
             <!-- Botón Cotizar aquí en la galería -->
             <div class="gallery-cta">
-                <a href="#agendar-cita" class="agendar-btn">
+                <a href="https://calendly.com/abeduldepartamentos/30min" class="agendar-btn" target="_blank">
                     <span>Cotizar aquí</span>
                 </a>
             </div>
         </div>
     </section>
     
-    <!-- Sección de descripción - SIMPLIFICADA -->
-    <section class="description-section">
-        <div class="container">
-            <div class="description-content">
-            </div>
-        </div>
-    </section>
-    
-    <!-- Sección de mensaje - NUEVA VERSIÓN CON LETRAS GRANDES TIPO TÍTULO -->
+    <!-- Sección de mensaje - TEXTO MÁS PEQUEÑO -->
     <section class="message-section">
         <div class="message-content">
             <h2 class="message-title">No vendemos sueños inalcanzables ni exageramos beneficios.<br>Ofrecemos hogares reales para familias que buscan estabilidad y seguridad, con un acompañamiento claro y responsable.</h2>
             <div style="margin-top: 40px;">
-                <a href="#agendar-cita" class="agendar-btn"><span>Agenda tu llamada</span></a>
+                <a href="https://calendly.com/abeduldepartamentos/30min" class="agendar-btn" target="_blank"><span>Agenda tu llamada</span></a>
             </div>
         </div>
     </section>
@@ -1772,7 +1707,7 @@
             <p class="home-message-text">Garantizamos claridad, acompañamiento y procesos transparentes.</p>
             <p class="home-message-text">Desde el primer contacto sabrás si este proyecto es para tu familia y cómo avanzar sin sorpresas.</p>
             <div style="margin-top: 40px;">
-                <a href="#agendar-cita" class="agendar-btn"><span>Agenda tu llamada</span></a>
+                <a href="https://calendly.com/abeduldepartamentos/30min" class="agendar-btn" target="_blank"><span>Agenda tu llamada</span></a>
             </div>
         </div>
     </section>
@@ -1814,7 +1749,7 @@
                         <div class="contact-item">
                             <div class="contact-icon">🌐</div>
                             <div class="contact-text">Conoce el proyecto</div>
-                            <a href="#agendar-cita" class="agendar-btn" style="margin-top: 15px; padding: 14px 20px; font-size: 1rem; width: 100%;"><span>Agenda tu llamada</span></a>
+                            <a href="https://calendly.com/abeduldepartamentos/30min" class="agendar-btn" style="margin-top: 15px; padding: 14px 20px; font-size: 1rem; width: 100%;" target="_blank"><span>Agenda tu llamada</span></a>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon">📩</div>
@@ -1822,7 +1757,7 @@
                                 Contáctenos:<br>
                                 <a href="mailto:abeduldepartamentos@outlook.com" class="contact-link">abeduldepartamentos@outlook.com</a>
                             </div>
-                            <a href="#agendar-cita" class="agendar-btn" style="margin-top: 15px; padding: 14px 20px; font-size: 1rem; width: 100%;"><span>Agenda tu llamada</span></a>
+                            <a href="https://calendly.com/abeduldepartamentos/30min" class="agendar-btn" style="margin-top: 15px; padding: 14px 20px; font-size: 1rem; width: 100%;" target="_blank"><span>Agenda tu llamada</span></a>
                         </div>
                     </div>
                 </div>
@@ -1867,15 +1802,6 @@
     </div>
 
     <script>
-        // Pantalla de carga
-        window.addEventListener('load', function() {
-            const loadingOverlay = document.getElementById('loadingOverlay');
-            setTimeout(() => {
-                loadingOverlay.style.opacity = '0';
-                loadingOverlay.style.visibility = 'hidden';
-            }, 1000);
-        });
-        
         // Variables globales para el carrusel principal (automático)
         let currentSlide = 0;
         const totalSlides = 5;
