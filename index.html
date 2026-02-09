@@ -752,7 +752,7 @@
             font-size: 1.1rem;
         }
         
-        /* Sección de mensaje - MEJORADA CON FORMATO SIMILAR AL TÍTULO PRINCIPAL */
+        /* Sección de mensaje - COMPLETAMENTE REFORMATEADA Y CORREGIDA */
         .message-section {
             background-color: var(--navy-blue); /* COLOR 5d5741 */
             color: var(--beige);                /* TEXTO eee5d4 */
@@ -760,43 +760,52 @@
             width: 100%;
             margin: 0;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .message-content {
             width: 100%;
-            max-width: 900px;
+            max-width: 800px;
             margin: 0 auto;
         }
         
         .message-title {
-            font-size: 1.4rem;
-            line-height: 1.5;
+            font-size: 1.3rem;
+            line-height: 1.6;
             font-family: 'ADA', 'Montserrat', sans-serif;
-            font-weight: 400; /* Peso normal */
+            font-weight: 400;
             margin-bottom: 30px;
             width: 100%;
-            color: var(--beige); /* COLOR eee5d4 */
+            color: var(--beige);
             text-align: center;
             padding: 0 10px;
         }
         
         .message-title strong {
-            font-weight: 800; /* Negrilla para palabras específicas */
+            font-weight: 800;
         }
         
         @media (min-width: 768px) {
             .message-title {
-                font-size: 1.6rem;
-                line-height: 1.6;
-                padding: 0 20px;
+                font-size: 1.5rem;
+                line-height: 1.7;
+                padding: 0;
             }
         }
         
         @media (min-width: 992px) {
             .message-title {
-                font-size: 1.8rem;
-                line-height: 1.6;
-                padding: 0;
+                font-size: 1.7rem;
+                line-height: 1.8;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .message-title {
+                font-size: 1.9rem;
+                line-height: 1.8;
             }
         }
         
@@ -1586,7 +1595,7 @@
         </div>
     </section>
     
-    <!-- NUEVA SECCIÓN DE UBICACIÓN ESTRATÉGICA CON AKI AGREGADO -->
+    <!-- NUEVA SECCIÓN DE UBICACIÓN ESTRATÉGICA CON GRAN AKI AGREGADO -->
     <section class="location-section">
         <div class="location-container">
             <h2 class="location-title">Ubicación estratégica</h2>
@@ -1681,13 +1690,11 @@
         </div>
     </section>
     
-    <!-- Sección de mensaje - FORMATO MEJORADO Y JUSTIFICADO -->
+    <!-- Sección de mensaje - AHORA PERFECTAMENTE FORMATEADO -->
     <section class="message-section">
         <div class="message-content">
             <h2 class="message-title">
-                <strong>Transparencia</strong> desde el primer contacto.<br>
-                <strong>Precios claros</strong> y <strong>acompañamiento responsable,</strong><br>
-                <strong>seguridad</strong> y un <strong>acompañamiento claro</strong> en cada paso.
+                <strong>Transparencia</strong> desde el primer contacto. <strong>Precios claros</strong> y <strong>acompañamiento responsable</strong>, <strong>seguridad</strong> y un <strong>acompañamiento claro</strong> en cada paso.
             </h2>
             <div style="margin-top: 40px;">
                 <a href="https://calendly.com/abeduldepartamentos/30min" class="agendar-btn" target="_blank"><span>Agenda tu llamada</span></a>
