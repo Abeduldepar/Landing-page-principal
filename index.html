@@ -752,7 +752,7 @@
             font-size: 1.1rem;
         }
         
-        /* Sección de mensaje - TEXTO MÁS PEQUEÑO */
+        /* Sección de mensaje - MEJORADA CON FORMATO SIMILAR AL TÍTULO PRINCIPAL */
         .message-section {
             background-color: var(--navy-blue); /* COLOR 5d5741 */
             color: var(--beige);                /* TEXTO eee5d4 */
@@ -764,29 +764,39 @@
         
         .message-content {
             width: 100%;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
         }
         
         .message-title {
-            font-size: 1.5rem;
-            line-height: 1.4;
+            font-size: 1.4rem;
+            line-height: 1.5;
             font-family: 'ADA', 'Montserrat', sans-serif;
-            font-weight: 600;
+            font-weight: 400; /* Peso normal */
             margin-bottom: 30px;
             width: 100%;
             color: var(--beige); /* COLOR eee5d4 */
+            text-align: center;
+            padding: 0 10px;
+        }
+        
+        .message-title strong {
+            font-weight: 800; /* Negrilla para palabras específicas */
         }
         
         @media (min-width: 768px) {
             .message-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+                line-height: 1.6;
+                padding: 0 20px;
             }
         }
         
         @media (min-width: 992px) {
             .message-title {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                line-height: 1.6;
+                padding: 0;
             }
         }
         
@@ -1251,7 +1261,7 @@
                 font-size: 1.2rem;
             }
             
-            .message-text, .home-message-text, .mobility-info-text {
+            .home-message-text, .mobility-info-text {
                 font-size: 1.3rem;
             }
             
@@ -1592,7 +1602,7 @@
                     </p>
                 </div>
                 
-                <!-- Servicios a la derecha (CON AKI AGREGADO) -->
+                <!-- Servicios a la derecha (CON GRAN AKI AGREGADO) -->
                 <div class="location-services">
                     <h3 class="services-title">Servicios:</h3>
                     
@@ -1671,12 +1681,14 @@
         </div>
     </section>
     
-    <!-- Sección de mensaje - TEXTO MÁS PEQUEÑO -->
+    <!-- Sección de mensaje - FORMATO MEJORADO Y JUSTIFICADO -->
     <section class="message-section">
         <div class="message-content">
-            <h2 class="message-title">Transparencia desde el primer contacto.
-Precios claros y acompañamiento responsable, seguridad y un acompañamiento claro en cada paso.
-</h2>
+            <h2 class="message-title">
+                <strong>Transparencia</strong> desde el primer contacto.<br>
+                <strong>Precios claros</strong> y <strong>acompañamiento responsable,</strong><br>
+                <strong>seguridad</strong> y un <strong>acompañamiento claro</strong> en cada paso.
+            </h2>
             <div style="margin-top: 40px;">
                 <a href="https://calendly.com/abeduldepartamentos/30min" class="agendar-btn" target="_blank"><span>Agenda tu llamada</span></a>
             </div>
@@ -2032,4 +2044,3 @@ Precios claros y acompañamiento responsable, seguridad y un acompañamiento cla
     </script>
 </body>
 </html>
-
